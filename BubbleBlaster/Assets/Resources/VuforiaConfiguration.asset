@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Name: VuforiaConfiguration
   m_EditorClassIdentifier: 
   vuforia:
-    vuforiaLicenseKey: 
+    vuforiaLicenseKey: ASHlCNH/////AAAAGSgy1lblzEz/hFhujInDj0dVi+Hz9GLt/zfJP+GWzwMl1ioMN3gEcHiBc8BNRnaJM9+sMd8Usxngi4KyF4H9CrKLzjygaul8snmj54BRPpj0l5g3d1gvSh5gyBBR3lLRG4yERQpPr+JvooirsN70cXvB9CalfVDCvF74aLOe7NVGzgNyfTKOiwi+Xu+FYmdrUxhcbU6TIOhdrYiyrbJE8lWFegcsuIE1RAUvdELDS1IIVliMcJMHE4ETPUEQyP+h1o4XlIw9L9uMx4GkrmqV5tmT1pvmm9gsI4WTWsmRlvy5woXimxbo+bNMJbx52/Vc1TvFtmbAR9Z+qYA9cxJecFkqSPDrKKd9l66783D0LEgd
     delayedInitialization: 0
     cameraDeviceModeSetting: -1
     maxSimultaneousImageTargets: 1
@@ -43,8 +43,10 @@ MonoBehaviour:
       FieldOfView: {x: 0, y: 0, z: 0, w: 0}
       ContainsMagnet: 0
   databaseLoad:
-    dataSetsToLoad: []
-    dataSetsToActivate: []
+    dataSetsToLoad:
+    - BubbleBlasterDB
+    dataSetsToActivate:
+    - BubbleBlasterDB
   videoBackground:
     clippingMode: 0
     matteShader: {fileID: 4800000, guid: f84e93cca971cda47a225f4c6a4156c9, type: 3}
