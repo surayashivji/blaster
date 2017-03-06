@@ -1,23 +1,25 @@
 # Bubble Blaster
 
-![Unity Version](https://img.shields.io/badge/Unity-5.5.0-brightgreen.svg)
+![Unity Version](https://img.shields.io/badge/Unity-5.5.0-brightgreen.svg) [![License: MIT License](https://img.shields.io/github/license/mashape/apistatus.svg)](https://opensource.org/licenses/MIT)
+
 
 **Bubble Blaster** is an AR shooter game built with Unity and Vuforia.
 
 ## Installation
 
-<p style="font-size:18px;"><u>Setup</u></p>
+####_Setup_
+
 1. Clone Repository
 2. Print the Bubble Shooter AR Marker (Below)<br><br>
-<a href='https://drive.google.com/file/d/0B6aOEAXdWnEGVXNaYU9URFJCOWs/view?usp=sharing'> <img style="width:160px;height:160px" src='http://i.imgur.com/5heyinv.jpg' title='Marker' alt='Marker'/></a>
+<a href='https://drive.google.com/file/d/0B6aOEAXdWnEGVXNaYU9URFJCOWs/view?usp=sharing'> <img src='http://i.imgur.com/tGhO5qM.png' title='Marker' alt='Marker'/></a>
 
-<p style="font-size:18px;"><u>iOS</u></p>
+####_iOS_
 1. Go to `File > Build Settings > iOS`
 2. Click `Build and Run`
 3. Navigate to `Builds` in Finder and open the generated `.xcworkspace` project
 4. Connect your iOS device to Xcode and Run!
 
-<p style="font-size:18px;"><u>Unity Editor</u></p>
+####_Unity Editor_
 1. Ensure that your webcam is available for access
 2. Press `play`
 3. Hold Marker to webcam to start playing!
