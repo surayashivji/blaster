@@ -462,8 +462,9 @@ PlayerSettings:
   XboxOneAllowedProductIds: []
   XboxOnePersistentLocalStorageSize: 0
   vrEditorSettings: {}
-  cloudServicesEnabled: {}
-  cloudProjectId: 1816a22c-8fdb-4959-96b6-bdebaada12b4
-  projectName: BubbleBlaster (1)
-  organizationId: surayashivji
+  cloudServicesEnabled:
+    UNet: 1
+  cloudProjectId: f70d8664-4a30-48af-9fe0-2711924e74ba
+  projectName: BubbleBlaster (3)
+  organizationId: yiyang92
   cloudEnabled: 0
