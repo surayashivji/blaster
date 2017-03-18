@@ -21,6 +21,7 @@ $RECYCLE.BIN/
 # Folders
 [Ll]ibrary/
 [Tt]emp/
+[Bb]uilds/
 [Oo]bj/
 ExportedObj/
 UnityGenerated/
