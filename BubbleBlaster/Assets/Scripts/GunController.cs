@@ -24,9 +24,10 @@ public class GunController : MonoBehaviour {
 //				}
 //
 //			}
-//		} else if (Input.GetMouseButtonDown (0)) { // mouse clicked somewhere in unity editor
-//			spawnSphere ();
-//		}
+//		} else 
+			if (Input.GetMouseButtonDown (0)) { // mouse clicked somewhere in unity editor
+			spawnSphere ();
+		}
 	}
 
 	public void spawnSphere() {
