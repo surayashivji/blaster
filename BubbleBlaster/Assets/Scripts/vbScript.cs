@@ -24,13 +24,12 @@ public class vbScript : MonoBehaviour, IVirtualButtonEventHandler  {
 	// IVirtualButtonEventHandler interface methods
 
 	public void OnButtonPressed(VirtualButtonAbstractBehaviour vb) {
-//		Debug.Log ("BUTTON PRESSED :)");
+		Debug.Log ("BUTTON PRESSED :)");
 
-//		GunController.spawnSphere ();
 		// cat.parent.GetComponent<CatController>().ExitConga();
 
 //		gunController.spawnSphere ();
-//		gameObject.GetComponentInParent<GunController>().spawnSphere();
+		gameObject.GetComponentInParent<GunController>().spawnSphere();
 	}
 
 	public void OnButtonReleased(VirtualButtonAbstractBehaviour vb) {

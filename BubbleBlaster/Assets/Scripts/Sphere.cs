@@ -24,13 +24,13 @@ public class Sphere : MonoBehaviour {
 //		Debug.Log (collisionInfo.collider.name);
 		Debug.Log("Detected collision between " + gameObject.name + " and " + collisionInfo.collider.name);
 //		DestroyObject (collidedTarget);
+		Destroy(this.gameObject);
 
 	}
 
 	void OnTriggerEnter(Collider other) {
 		Debug.Log ("HEY \n");
 		Debug.Log("Collided with " + other.gameObject.name);
-	
 
 	}
 }
