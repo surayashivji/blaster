@@ -5,92 +5,103 @@ using Vuforia;
 
 public class SpawnScript : MonoBehaviour {
 
-	// red target element to spawn
-	public GameObject targetObj;
+	public GameObject targetPrefab;
+	public int numOfInstances;
+	public float timeToSpawn = 1;
+	public float distanceFromCamera = 60;
+	// padding between targets
+	public float padding = 0.1f;
 
-	// number of targets to spawn
-	public int numTargets = 4;
+	private Dictionary<Vector3, GameObject> targetDict = new Dictionary<Vector3, GameObject>();
 
-	// time to spawn the targets
-	public float timeToSpawn = 1f;
+	private List<Vector3> availablePositions = new List<Vector3>();
 
-	// hold all targets on stage
-	private GameObject[] targetsList;
+	private float zPos = 0;
 
-	// define if position was set
-	private bool mPositionSet;
 
-	// Use this for initialization
 	void Start () {
-		mPositionSet = false;
-
-		// Initialize targets array 
-		targetsList = new GameObject[ numTargets ];
-
-		StartCoroutine( SpawnLoop() );
+		CalculateAvailablePositions ();
+		StartCoroutine (Spawn ());
 	}
 
-	
-	// Update is called once per frame
-//	void Update () {
-//		
-//	}
+	private void CalculateAvailablePositions() {
+		// find discrete x & y positions where the target prefab can be placed without overlapping with other targets
+		Camera camera = Camera.main;
+		Vector3 bottomLeft = camera.ViewportToWorldPoint(new Vector3(0,0,distanceFromCamera));
+		Vector3 topRight = camera.ViewportToWorldPoint (new Vector3 (1, 1, distanceFromCamera));
+		float minX = bottomLeft.x;
+		float maxX = topRight.x;
+		float minY = bottomLeft.y;
+		float maxY = topRight.y;
+		// pick Z value from any vector
+		zPos = bottomLeft.z;
 
-	// loop Spawning target elements
-	private IEnumerator SpawnLoop() {
-		// define spawning positon
-//		ChangePosition();
-		StartCoroutine( ChangePosition() );
+		// create a single instance of the prefab for calculations
+		var target = Instantiate (targetPrefab) as GameObject;
+		// if the target has a box collider, calculate the offset required to keep the object on screen
+		var collider = target.GetComponent<BoxCollider>();
 
-		// spawn targets
-		int x = 0;
-		while (x <= (numTargets - 1)) {
-			targetsList [x] = SpawnElement ();
-			x++;
-			yield return new WaitForSeconds(Random.Range(timeToSpawn, timeToSpawn*2));
+		Vector2 objectSize = Vector2.zero;
+
+		if (collider != null) {
+			Vector2 sizeOffset = Vector2.zero;
+			Vector2 colliderCenterOffset = Vector2.zero;
+
+			var t = target.transform;
+
+			colliderCenterOffset = -collider.center;
+			colliderCenterOffset.x *= t.localScale.x;
+			colliderCenterOffset.y *= t.localScale.y;
+
+			sizeOffset.x = collider.size.x * 0.5f * t.localScale.x;
+			sizeOffset.y = collider.size.y * 0.5f * t.localScale.y;
+
+			objectSize = new Vector2(collider.size.x *t.localScale.x, collider.size.y * t.localScale.y);
+
+			// recalculate min & max positions
+			minX = minX + colliderCenterOffset.x + sizeOffset.x;
+			maxX = maxX + colliderCenterOffset.x - sizeOffset.x;
+			minY = minY + colliderCenterOffset.y + sizeOffset.y;
+			maxY = maxY + colliderCenterOffset.y - sizeOffset.y;
 		}
-	}
 
-	// Spawn a target
-	private GameObject SpawnElement() {
+		// destroy the target instance
+		Destroy(target);
 
-//		Vector3 pos = new Vector3(Random.value, Random.value, 10.0f);
-//		pos = Camera.main.ViewportToWorldPoint(pos);
-
-//		GameObject target = Instantiate(targetObj, pos, Quaternion.identity);
-
-//		Debug.Log("Object created");
-
-
-		// spawn the element on a random position inside the device
-		GameObject target = Instantiate(targetObj, (Random.insideUnitSphere*4) + transform.position, transform.rotation ) as GameObject;
-		// define a random scale for the target
-//		float scale = Random.Range(0.05f, 0.1f);
-		// change the cube scale
-//		target.transform.localScale = new Vector3( scale, scale, scale );
-		Debug.Log("Object created");
-		return target;
-	}
-
-	private void SetPositon() {
-		Debug.Log ("seting position \n");
-		// get position of AR Camera
-		Transform cameraPos = Camera.main.transform;
-		Debug.Log(cameraPos);
-		// set position 10 units forward from camera's positon
-		transform.position = cameraPos.forward * 60;
-		Debug.Log ("\n");
-		Debug.Log (transform.position);
-	}
-
-	private IEnumerator ChangePosition() {
-		yield return new WaitForSeconds(0.1f);
-		// Define the Spawn position only once
-		if ( !mPositionSet ){
-			// change the position only if Vuforia is active
-			if (VuforiaBehaviour.Instance.enabled)
-				Debug.Log ("about to set positon");
-				SetPositon();
+		// create list of available positions
+		for (float x = minX; x <= maxX; x += objectSize.x + padding) {
+			for (float y = minY; y <= maxY; y += objectSize.y + padding) {
+				availablePositions.Add(new Vector3(x,y,zPos));
+			}
 		}
+
+
+	}
+
+	private IEnumerator Spawn() {
+		if (availablePositions.Count < numOfInstances) {
+			Debug.LogError ("Number of prefabs requested is greater than available positions");
+			yield return null;
+		} else {
+			while (targetDict.Count != numOfInstances) {
+				var target = Instantiate (targetPrefab) as GameObject;
+				SetPosition (target.transform);
+
+				//add to list
+				targetDict.Add (target.transform.position, target);
+				yield return new WaitForSeconds(Random.Range(timeToSpawn, 2 * timeToSpawn));
+			}
+		}
+
+	}
+
+	private void SetPosition(Transform t) {
+		Vector3 proposedPosition = availablePositions [Random.Range (0, availablePositions.Count)];
+		availablePositions.Remove (proposedPosition);
+		t.position = proposedPosition;
+	}
+
+	public void ReclaimPosition(Vector3 position) {
+		availablePositions.Add (position);
 	}
 }

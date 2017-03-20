@@ -409,3 +409,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4477d3077ea9144a6930c830a56e0f0d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  timeToFireMode: 5
+  timeToDeath: 10
+  fireParticlePrefab: {fileID: 1024947534186192, guid: 132ee388776634fa49ca99161ea49d1d,
+    type: 2}
