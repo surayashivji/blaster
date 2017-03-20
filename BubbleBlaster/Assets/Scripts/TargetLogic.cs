@@ -16,35 +16,50 @@ public class TargetLogic : MonoBehaviour {
 	// current fire game object
 	private GameObject currentFireParticle;
 
-//
-	private IEnumerator SetTargetOnFire(float seconds, GameObject obj) {
-		Debug.Log("Target is normal, wait for seconds: ");
-		Debug.Log(seconds);
-		yield return new WaitForSeconds(seconds);
-		Debug.Log("now set target to the next state and set on fire");
-		// set target on fire
-//		currentFireParticle = Instantiate(fireParticlePrefab, this.gameObject.transform.position, Quaternion.identity);
-
-		currentFireParticle = Instantiate (fireParticlePrefab) as GameObject;
-		currentFireParticle.transform.parent = this.gameObject.transform;
-
-		StartCoroutine(KillTarget(timeToDeath, this.gameObject));
-	}
+	// return true if target is burning
+	public static bool targetBurning;
 
 	// Use this for initialization
 	void Start () {
+		targetBurning = false;
 		StartCoroutine(SetTargetOnFire(timeToFireMode, this.gameObject));
 	}
 
+	private IEnumerator SetTargetOnFire(float seconds, GameObject obj) {
+		Debug.Log ("Target is normal, wait for seconds before setting on fire");
+		yield return new WaitForSeconds(seconds);
+		Debug.Log ("set target on fire if it hasn't already been shot at");
+		if (obj != null) {
+			targetBurning = true;
+			currentFireParticle = Instantiate(fireParticlePrefab, this.gameObject.transform.position, Quaternion.identity);
+			StartCoroutine(KillTarget(timeToDeath, this.gameObject));
+		} else {
+			// object has already been killed
+			Debug.Log("this target has already been killed no fire needed");
+			reclaimPositon (obj);
+			yield break;
+		}
+	}
 
 	private IEnumerator KillTarget(float seconds, GameObject obj) {
-		Debug.Log("Target is ON FIREEE, wait for seconds: ");
-		Debug.Log(seconds);
+		Debug.Log ("We know the target is on fire");
 		yield return new WaitForSeconds(seconds);
-		Debug.Log ("DESTROY BOBJ");
-		//Reclaim this target's position for future  spawning
-		GameObject.FindObjectOfType<SpawnScript> ().ReclaimPosition (obj.transform.position);
-		Destroy (obj);
-		Destroy (currentFireParticle);
+		if (obj != null) {
+			// target has not been shot with sphere
+			// destroy target object and particle
+			// GAME OVER
+			Debug.Log ("target hasn't been killed by sphere yet, so destroy");
+			Debug.Log ("game over...");
+			reclaimPositon (obj);
+			Destroy (obj);
+			Destroy (currentFireParticle);
+		} else {
+			// target has already been destroyed by user
+		}
 	}
+
+	private void reclaimPositon(GameObject obj) {
+		GameObject.FindObjectOfType<SpawnScript> ().ReclaimPosition (obj.transform.position);
+	}
+
 }

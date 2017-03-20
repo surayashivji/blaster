@@ -4,11 +4,8 @@ using UnityEngine;
 
 public class Sphere : MonoBehaviour {
 
-	public static float bottomY = -20f;
-
 	// Use this for initialization
 	void Start () {
-		
 	}
 	
 	// Update is called once per frame
@@ -20,17 +17,19 @@ public class Sphere : MonoBehaviour {
 	}
 
 	void OnCollisionEnter(Collision collisionInfo) {
+		// game object the sphere collided with
 		GameObject collidedTarget = collisionInfo.collider.gameObject;
-//		Debug.Log (collisionInfo.collider.name);
 		Debug.Log("Detected collision between " + gameObject.name + " and " + collisionInfo.collider.name);
-//		DestroyObject (collidedTarget);
-		Destroy(this.gameObject);
-
-	}
-
-	void OnTriggerEnter(Collider other) {
-		Debug.Log ("HEY \n");
-		Debug.Log("Collided with " + other.gameObject.name);
-
+		Debug.Log ("\n");
+		Debug.Log (collidedTarget.tag);
+		if (collidedTarget.tag == "target_tag" || collidedTarget.tag == "fire_ps") {
+			// Destroy target
+			Destroy (collisionInfo.collider.gameObject);
+			// destroy sphere
+			Destroy (this.gameObject);
+		} else {
+			Debug.Log ("not target tag");
+			Debug.Log (collisionInfo.collider.name);
+		}
 	}
 }

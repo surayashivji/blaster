@@ -6,14 +6,20 @@ using Vuforia;
 public class SpawnScript : MonoBehaviour {
 
 	public GameObject targetPrefab;
+
+	// number of targets
 	public int numOfInstances;
-	public float timeToSpawn = 1;
+
+	public float timeToSpawn = 3;
+
 	public float distanceFromCamera = 60;
+
 	// padding between targets
 	public float padding = 0.1f;
 
 	private Dictionary<Vector3, GameObject> targetDict = new Dictionary<Vector3, GameObject>();
 
+	// positions where the target can be placed on the screen (within bounds, not overlapping with other targets)
 	private List<Vector3> availablePositions = new List<Vector3>();
 
 	private float zPos = 0;
@@ -23,7 +29,7 @@ public class SpawnScript : MonoBehaviour {
 		CalculateAvailablePositions ();
 		StartCoroutine (Spawn ());
 	}
-
+		
 	private void CalculateAvailablePositions() {
 		// find discrete x & y positions where the target prefab can be placed without overlapping with other targets
 		Camera camera = Camera.main;
@@ -33,11 +39,13 @@ public class SpawnScript : MonoBehaviour {
 		float maxX = topRight.x;
 		float minY = bottomLeft.y;
 		float maxY = topRight.y;
+
 		// pick Z value from any vector
 		zPos = bottomLeft.z;
 
 		// create a single instance of the prefab for calculations
 		var target = Instantiate (targetPrefab) as GameObject;
+
 		// if the target has a box collider, calculate the offset required to keep the object on screen
 		var collider = target.GetComponent<BoxCollider>();
 
@@ -74,8 +82,6 @@ public class SpawnScript : MonoBehaviour {
 				availablePositions.Add(new Vector3(x,y,zPos));
 			}
 		}
-
-
 	}
 
 	private IEnumerator Spawn() {
@@ -101,6 +107,7 @@ public class SpawnScript : MonoBehaviour {
 		t.position = proposedPosition;
 	}
 
+	// add position where the target was just destroyed back into list of available positions
 	public void ReclaimPosition(Vector3 position) {
 		availablePositions.Add (position);
 	}
