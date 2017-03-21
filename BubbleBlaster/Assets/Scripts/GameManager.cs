@@ -2,11 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine.SceneManagement;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour {
 
 	// Singleton GameManager
-	public static GameManager Instance{ set; get;}
+	public static GameManager Instance{ set; get; }
 
 	private void Awake() {
 		Instance = this;

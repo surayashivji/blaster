@@ -55,8 +55,9 @@ public class TargetLogic : MonoBehaviour {
 			Destroy (currentFireParticle);
 		} else {
 			// target has already been destroyed by user
+			yield break;
 		}
-	}
+	} 
 
 	private void reclaimPositon(GameObject obj) {
 		GameObject.FindObjectOfType<SpawnScript> ().ReclaimPosition (obj.transform.position);

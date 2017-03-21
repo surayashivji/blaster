@@ -7,18 +7,18 @@
 
 ## Installation
 
-####Setup
+#### Setup
 
 1. Clone Repository
 2. Print the Bubble Shooter AR Marker (Below)<br><br>
 <a href='https://drive.google.com/file/d/0B6aOEAXdWnEGVXNaYU9URFJCOWs/view?usp=sharing'> <img src='http://i.imgur.com/tGhO5qM.png' title='Marker' alt='Marker'/></a>
 
-####iOS
+#### iOS
 1.  Ensure your iOS device is connected and [can run an iOS app](https://developer.apple.com/library/content/documentation/IDEs/Conceptual/AppDistributionGuide/LaunchingYourApponDevices/LaunchingYourApponDevices.html)
 2. Go to `File > Build Settings > iOS`
 2. Click `Build and Run`
 
-####Unity Editor
+#### Unity Editor
 1. Ensure that your webcam is available for access
 2. Press `play`
 3. Hold the Marker to your webcam to start playing

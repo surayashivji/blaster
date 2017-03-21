@@ -22,13 +22,14 @@ public class Sphere : MonoBehaviour {
 		Debug.Log("Detected collision between " + gameObject.name + " and " + collisionInfo.collider.name);
 		Debug.Log ("\n");
 		Debug.Log (collidedTarget.tag);
-		if (collidedTarget.tag == "target_tag" || collidedTarget.tag == "fire_ps") {
+		if (collidedTarget.tag == "target_tag") {
 			// Destroy target
+			Debug.Log("object is a target, lets destroy it!");
 			Destroy (collisionInfo.collider.gameObject);
 			// destroy sphere
 			Destroy (this.gameObject);
 		} else {
-			Debug.Log ("not target tag");
+			Debug.Log ("object not target tag");
 			Debug.Log (collisionInfo.collider.name);
 		}
 	}
