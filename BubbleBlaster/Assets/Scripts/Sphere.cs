@@ -4,13 +4,7 @@ using UnityEngine;
 
 public class Sphere : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	}
+	private TargetLogic targetScript;
 
 	void OnBecameInvisible() {
 		DestroyObject(gameObject);
@@ -20,16 +14,21 @@ public class Sphere : MonoBehaviour {
 		// game object the sphere collided with
 		GameObject collidedTarget = collisionInfo.collider.gameObject;
 		Debug.Log("Detected collision between " + gameObject.name + " and " + collisionInfo.collider.name);
-		Debug.Log ("\n");
 		Debug.Log (collidedTarget.tag);
 		if (collidedTarget.tag == "target_tag") {
 			// Destroy target
-			Debug.Log("object is a target, lets destroy it!");
 			Destroy (collisionInfo.collider.gameObject);
+
+			// Destroy particle system on the target if it exists
+			Debug.Log("DESTROY PARTICLE!");
+			targetScript.destroyParticle ();
+//			Transform particleTransform = collisionInfo.collider.gameObject.transform.FindChild ("Fire Particle System");
+//			GameObject particleObject = particleTransform.gameObject;
+//			Destroy (particleObject);
+
 			// destroy sphere
 			Destroy (this.gameObject);
 		} else {
-			Debug.Log ("object not target tag");
 			Debug.Log (collisionInfo.collider.name);
 		}
 	}

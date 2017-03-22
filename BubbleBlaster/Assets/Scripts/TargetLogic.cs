@@ -31,8 +31,9 @@ public class TargetLogic : MonoBehaviour {
 		Debug.Log ("set target on fire if it hasn't already been shot at");
 		if (obj != null) {
 			targetBurning = true;
-			currentFireParticle = Instantiate(fireParticlePrefab, this.gameObject.transform.position, Quaternion.identity);
-			StartCoroutine(KillTarget(timeToDeath, this.gameObject));
+			currentFireParticle = Instantiate(fireParticlePrefab, obj.transform.position, Quaternion.identity);
+//			currentFireParticle.transform.SetParent(obj.transform, false);
+			StartCoroutine(KillTarget(timeToDeath, obj));
 		} else {
 			// object has already been killed
 			Debug.Log("this target has already been killed no fire needed");
@@ -49,7 +50,6 @@ public class TargetLogic : MonoBehaviour {
 			// destroy target object and particle
 			// GAME OVER
 			Debug.Log ("target hasn't been killed by sphere yet, so destroy");
-			Debug.Log ("game over...");
 			reclaimPositon (obj);
 			Destroy (obj);
 			Destroy (currentFireParticle);
@@ -63,4 +63,12 @@ public class TargetLogic : MonoBehaviour {
 		GameObject.FindObjectOfType<SpawnScript> ().ReclaimPosition (obj.transform.position);
 	}
 
+	public void destroyParticle() {
+		Debug.Log("115");
+		Debug.Log("\n");
+		Debug.Log("surz");
+		if (targetBurning) {
+			Destroy (this.currentFireParticle);
+		}
+	}
 }

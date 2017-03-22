@@ -691,7 +691,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   targetPrefab: {fileID: 1271068745269454, guid: 73987a283da984d9eaf2f990fbd33d47,
     type: 2}
-  numOfInstances: 1
+  numOfInstances: 6
   timeToSpawn: 2
   distanceFromCamera: 60
   padding: 0.1

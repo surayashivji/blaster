@@ -6,14 +6,12 @@ using Vuforia;
 public class vbScript : MonoBehaviour, IVirtualButtonEventHandler  {
 
 	// create a reference to the vb game object
-	private GameObject shootVBObject; 
-//	private GameObject gunController;
+	private GameObject shootVBObject;
 
 	// Use this for initialization
 	void Start () {
 
 		// initialize gun controller
-//		gunController = g/ameObject.GetComponentInParent<GunController>() as GameObject;
 
 		shootVBObject = GameObject.Find ("shootButton");
 

@@ -20,7 +20,6 @@ public class GunController : MonoBehaviour {
 		// create object and give it force depending on image tracker on gon position/rotation
 		// create game object @ position/rotation of gun
 		GameObject go = Instantiate (spherePrefab, spawnObject.position, spawnObject.rotation) as GameObject;
-//		go.GetComponent<Rigidbody> ().AddForce (transform.forward * 30, ForceMode.VelocityChange);
 		go.GetComponent<Rigidbody> ().AddForce (go.transform.forward * 30, ForceMode.VelocityChange);
 	}
 }

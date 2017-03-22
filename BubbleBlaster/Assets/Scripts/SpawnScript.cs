@@ -25,7 +25,9 @@ public class SpawnScript : MonoBehaviour {
 	private float zPos = 0;
 
 
-	void Start () {
+	IEnumerator Start () {
+		// vuforia has no camera configuration callback so wait before using camera api
+		yield return new WaitForSeconds (2);
 		CalculateAvailablePositions ();
 		StartCoroutine (Spawn ());
 	}
@@ -33,7 +35,8 @@ public class SpawnScript : MonoBehaviour {
 	private void CalculateAvailablePositions() {
 		// find discrete x & y positions where the target prefab can be placed without overlapping with other targets
 		Camera camera = Camera.main;
-		Vector3 bottomLeft = camera.ViewportToWorldPoint(new Vector3(0,0,distanceFromCamera));
+		// viewport coordinates control what percentage of the screen we want to spawn targets in
+		Vector3 bottomLeft = camera.ViewportToWorldPoint(new Vector3(0,0.3f,distanceFromCamera));
 		Vector3 topRight = camera.ViewportToWorldPoint (new Vector3 (1, 1, distanceFromCamera));
 		float minX = bottomLeft.x;
 		float maxX = topRight.x;
@@ -50,6 +53,9 @@ public class SpawnScript : MonoBehaviour {
 		var collider = target.GetComponent<BoxCollider>();
 
 		Vector2 objectSize = Vector2.zero;
+
+		Debug.Log ("BBb " + bottomLeft + " " + topRight);
+		Debug.Log (string.Format ("{0} {1} {2} {3}", minX, minY, maxX, maxY));
 
 		if (collider != null) {
 			Vector2 sizeOffset = Vector2.zero;
@@ -110,5 +116,15 @@ public class SpawnScript : MonoBehaviour {
 	// add position where the target was just destroyed back into list of available positions
 	public void ReclaimPosition(Vector3 position) {
 		availablePositions.Add (position);
+	}
+
+	private void OnDrawGizmosSelected() {
+		Camera camera = Camera.main;
+		Vector3 bottomLeft = camera.ViewportToWorldPoint(new Vector3(0,0.3f,distanceFromCamera));
+		Vector3 topRight = camera.ViewportToWorldPoint (new Vector3 (1, 1, distanceFromCamera));
+		Gizmos.color = Color.yellow;
+		Debug.Log ("" + bottomLeft + " " + topRight);
+		Gizmos.DrawSphere(bottomLeft, 1);
+		Gizmos.DrawSphere(topRight, 1);
 	}
 }
