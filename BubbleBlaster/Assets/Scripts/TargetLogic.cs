@@ -64,9 +64,6 @@ public class TargetLogic : MonoBehaviour {
 	}
 
 	public void destroyParticle() {
-		Debug.Log("115");
-		Debug.Log("\n");
-		Debug.Log("surz");
 		if (targetBurning) {
 			Destroy (this.currentFireParticle);
 		}
