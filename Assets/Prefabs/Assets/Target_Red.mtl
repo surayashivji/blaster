@@ -1,0 +1,18 @@
+newmtl pasted__Board_Red_mat
+illum 4
+Kd 0.74 0.00 0.00
+Ka 0.74 0.00 0.00
+Tf 1.00 1.00 1.00
+Ni 1.50
+Ks 0.00 0.00 0.00
+map_Ks Targeting_ReflectionMap.jpg
+Ns 55.00
+newmtl pasted__Board_White_mat
+illum 4
+Kd 0.91 0.91 0.91
+Ka 0.91 0.91 0.91
+Tf 1.00 1.00 1.00
+Ni 1.50
+Ks 0.00 0.00 0.00
+map_Ks Targeting_ReflectionMap.jpg
+Ns 55.00
