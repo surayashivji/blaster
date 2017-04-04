@@ -53,6 +53,7 @@ public class TargetLogic : MonoBehaviour {
 			reclaimPositon (obj);
 			Destroy (obj);
 			Destroy (currentFireParticle);
+			GameManager.Instance.ChangeScene ("GameOver");
 		} else {
 			// target has already been destroyed by user
 			yield break;
