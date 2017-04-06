@@ -37,7 +37,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.4465934, g: 0.49642956, b: 0.5748249, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -120,6 +120,9 @@ MonoBehaviour:
   spherePrefab: {fileID: 1222676934703556, guid: 63d8a87ee82bf4b8db0301080207952e,
     type: 2}
   spawnObject: {fileID: 1925078691}
+  bounds:
+    m_Center: {x: 0, y: 0, z: 0}
+    m_Extent: {x: 0, y: 0, z: 0}
 --- !u!43 &267867099
 Mesh:
   m_ObjectHideFlags: 0
@@ -691,8 +694,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   targetPrefab: {fileID: 1271068745269454, guid: 73987a283da984d9eaf2f990fbd33d47,
     type: 2}
-  numOfInstances: 6
-  timeToSpawn: 2
+  numOfInstances: 3
+  timeToSpawn: 0
   distanceFromCamera: 60
   padding: 0.1
 --- !u!4 &1046025700
@@ -795,7 +798,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1389553520}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: -23}
   m_LocalScale: {x: 0.4026439, y: 0.40264407, z: 0.40264407}
   m_Children: []
   m_Father: {fileID: 474444478}
@@ -803,7 +806,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -227.7, y: -147.7}
+  m_AnchoredPosition: {x: 51, y: -26}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1389553522
@@ -1116,8 +1119,8 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1855356150}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 1262}
+  m_LocalScale: {x: 3.547506, y: 3.547506, z: 3.547506}
   m_Children:
   - {fileID: 474444478}
   m_Father: {fileID: 0}
@@ -1125,8 +1128,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 240, y: 160}
-  m_SizeDelta: {x: 100, y: 100}
+  m_AnchoredPosition: {x: 674, y: 674}
+  m_SizeDelta: {x: 480, y: 320}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1925078690
 GameObject:
