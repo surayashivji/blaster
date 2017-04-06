@@ -53,9 +53,12 @@ public class TargetLogic : MonoBehaviour {
 			reclaimPositon (obj);
 			Destroy (obj);
 			Destroy (currentFireParticle);
+			Application.LoadLevel ("GameOver");
 		} else {
 			// target has already been destroyed by user
+			Application.LoadLevel("WinLevel");
 			yield break;
+
 		}
 	} 
 
@@ -68,4 +71,6 @@ public class TargetLogic : MonoBehaviour {
 			Destroy (this.currentFireParticle);
 		}
 	}
+
+
 }

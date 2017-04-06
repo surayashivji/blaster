@@ -26,7 +26,7 @@ public class vbScript : MonoBehaviour, IVirtualButtonEventHandler  {
 	public void OnButtonPressed(VirtualButtonAbstractBehaviour vb) {
 		Debug.Log ("Virtual Button Pressed");
 
-		gameObject.GetComponentInParent<GunController>().SpawnSphere();
+		gameObject.GetComponentInParent<GunController>().spawnSphere();
 	}
 
 	public void OnButtonReleased(VirtualButtonAbstractBehaviour vb) {
