@@ -15,3 +15,5 @@ EditorBuildSettings:
     path: Assets/Scenes/InitialScene.unity
   - enabled: 1
     path: Assets/Scenes/GameOver.unity
+  - enabled: 1
+    path: Assets/Scenes/DuckScene.unity
