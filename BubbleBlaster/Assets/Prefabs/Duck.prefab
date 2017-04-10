@@ -118,12 +118,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d7b6996f9c6c84b7985eafc46247a8a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 0.5
+  moveSpeed: 0.2
   a: {x: 0, y: 0, z: 0}
   b: {x: 0, y: 0, z: 0}
   x1: 0
   x2: 0
-  timeToDeath: 30
+  timeToFireMode: 3
+  timeToDeath: 10
+  fireParticlePrefab: {fileID: 1024947534186192, guid: 132ee388776634fa49ca99161ea49d1d,
+    type: 2}
+  wetDuckPrefab: {fileID: 1901606958683680, guid: 11530e3c8ac1b4eb7bbf4b04608a6b12,
+    type: 2}
+  currentwetDuckPrefab: {fileID: 0}
   colliders:
   - {fileID: 0}
   - {fileID: 0}

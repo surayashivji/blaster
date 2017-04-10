@@ -115,15 +115,15 @@ public class EnemyCreator : MonoBehaviour {
 		availablePositions.Add (position);
 	}
 
-	private void OnDrawGizmosSelected() {
-		Camera camera = Camera.main;
-		Vector3 bottomLeft = camera.ViewportToWorldPoint(new Vector3(0,0.3f,distanceFromCamera));
-		Vector3 topRight = camera.ViewportToWorldPoint (new Vector3 (1, 1, distanceFromCamera));
-		Gizmos.color = Color.yellow;
-		Debug.Log ("" + bottomLeft + " " + topRight);
-		Gizmos.DrawSphere(bottomLeft, 1);
-		Gizmos.DrawSphere(topRight, 1);
-	}
+//	private void OnDrawGizmosSelected() {
+//		Camera camera = Camera.main;
+//		Vector3 bottomLeft = camera.ViewportToWorldPoint(new Vector3(0,0.3f,distanceFromCamera));
+//		Vector3 topRight = camera.ViewportToWorldPoint (new Vector3 (1, 1, distanceFromCamera));
+//		Gizmos.color = Color.yellow;
+//		Debug.Log ("" + bottomLeft + " " + topRight);
+//		Gizmos.DrawSphere(bottomLeft, 1);
+//		Gizmos.DrawSphere(topRight, 1);
+//	}
 
 
 //	//2    
