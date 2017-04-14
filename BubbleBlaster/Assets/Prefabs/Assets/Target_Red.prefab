@@ -23,7 +23,7 @@ GameObject:
   - component: {fileID: 114915938396512158}
   - component: {fileID: 82360909106941170}
   - component: {fileID: 114333414654429520}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Target_Red
   m_TagString: target_tag
   m_Icon: {fileID: 0}
@@ -40,7 +40,7 @@ GameObject:
   - component: {fileID: 4435903510758286}
   - component: {fileID: 33674523301234496}
   - component: {fileID: 23586017865535294}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: group_pasted__Board_05
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -57,7 +57,7 @@ GameObject:
   - component: {fileID: 4808313762586832}
   - component: {fileID: 33760675784495860}
   - component: {fileID: 23227282927187410}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: group_pasted__Board_03
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -74,7 +74,7 @@ GameObject:
   - component: {fileID: 4923216936894770}
   - component: {fileID: 33831743609395056}
   - component: {fileID: 23230496328787546}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: group_pasted__Board_04
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -91,7 +91,7 @@ GameObject:
   - component: {fileID: 4703552595932542}
   - component: {fileID: 33386667626806906}
   - component: {fileID: 23343768669721910}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: group_pasted__Board_02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -108,7 +108,7 @@ GameObject:
   - component: {fileID: 4163927450438818}
   - component: {fileID: 33202061394972102}
   - component: {fileID: 23287694801563840}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: pasted__Board_01_group
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -502,7 +502,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4477d3077ea9144a6930c830a56e0f0d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeToFireMode: 10
+  scoreText: {fileID: 0}
+  score: 0
+  timeToFireMode: 1
   timeToDeath: 20
   fireParticlePrefab: {fileID: 1024947534186192, guid: 132ee388776634fa49ca99161ea49d1d,
     type: 2}

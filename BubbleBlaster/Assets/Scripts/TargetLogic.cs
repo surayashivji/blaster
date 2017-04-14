@@ -1,11 +1,17 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class TargetLogic : MonoBehaviour {
 
+
+	public Text scoreText;
+
+	public int score;
+
 	// time it takes for target to go into fire mode
-	public float timeToFireMode = 10.0f;
+	public float timeToFireMode = 1.0f;
 
 	// time it takes for target to go from fire mode to destruction
 	public float timeToDeath = 20.0f;
@@ -21,8 +27,16 @@ public class TargetLogic : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+		scoreText = GameObject.Find("Score").GetComponent<Text> ();
+		score = 0;
+		UpdateScore ();
 		targetBurning = false;
 		StartCoroutine(SetTargetOnFire(timeToFireMode, this.gameObject));
+	}
+
+	void Update(){
+		
+
 	}
 
 	private IEnumerator SetTargetOnFire(float seconds, GameObject obj) {
@@ -54,7 +68,7 @@ public class TargetLogic : MonoBehaviour {
 			Destroy (obj);
 			Destroy (currentFireParticle);
 			Application.LoadLevel ("GameOver");
-		} else {
+		} else if (obj == null) {
 			// target has already been destroyed by user
 			Application.LoadLevel("WinLevel");
 			yield break;
@@ -67,10 +81,19 @@ public class TargetLogic : MonoBehaviour {
 	}
 
 	public void destroyParticle() {
-		if (targetBurning) {
 			Destroy (this.currentFireParticle);
-		}
+
 	}
 
+	public void AddScore()
+	{
+		score += 100;
+		UpdateScore ();
+	}
+
+	public void UpdateScore()
+	{
+		scoreText.text = "Score: " + score;
+	}
 
 }

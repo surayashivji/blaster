@@ -15,7 +15,7 @@ public class DuckController : MonoBehaviour {
 	public Vector3 a, b;
 	public float x1, x2;
 	// time it takes for target to go into fire mode
-	public float timeToFireMode = 3.0f;
+	public float timeToFireMode = 0f;
 
 	public float timeToDeath = 30.0f;
 
@@ -32,7 +32,17 @@ public class DuckController : MonoBehaviour {
 	public GameObject wetDuckPrefab; 
 
 	// current wet duck prefab
-	public GameObject currentwetDuckPrefab;
+	private GameObject currentwetDuckPrefab;
+
+
+	// dead duck prefab
+	public GameObject deadDuckPrefab;
+
+	// current dead duck prefab
+	private GameObject currentdeadDuckPrefab;
+
+
+
 
 	[SerializeField]
 	private PolygonCollider2D[] colliders;
@@ -97,7 +107,8 @@ public class DuckController : MonoBehaviour {
 	{
 		if (collisionInfo.collider.tag == "sphere") {
 			Debug.Log ("Bullet hit duck");
-			Instantiate (wetDuckPrefab,this.gameObject.transform.position,Quaternion.identity);
+			loadWetDuck();
+			Destroy (this.gameObject);
 		}
 	}
 		
@@ -108,12 +119,14 @@ public class DuckController : MonoBehaviour {
 			Debug.Log("camera is null");
 			return;
 		}
-		
-		float yMax = Camera.main.orthographicSize - 0.5f;
-		transform.position = new Vector3( spawnPoint.position.x, 
-			Random.Range(-yMax, yMax), 
-			transform.position.z );
-		Debug.Log ("duck is invisible");
+//		
+//		float yMax = Camera.main.orthographicSize - 0.5f;
+//		transform.position = new Vector3( spawnPoint.position.x, 
+//			Random.Range(-yMax, yMax), 
+//			transform.position.z );
+//		Debug.Log ("duck is invisible");
+
+		Destroy (gameObject);
 	}
 
 	private IEnumerator KillTarget(float seconds, GameObject obj) {
@@ -124,9 +137,23 @@ public class DuckController : MonoBehaviour {
 			// destroy target object and particle
 			// GAME OVER
 			Debug.Log ("duck hasn't been killed by sphere yet, so destroy");
-			currentwetDuckPrefab = Instantiate (wetDuckPrefab,obj.transform.position,Quaternion.identity);
+			loadDeadDuck ();
 			Destroy (obj);
-//			Application.LoadLevel ("GameOver");
+			Application.LoadLevel ("GameOver");
+
+//
+//			GameObject[] ducksToKill;
+//			ducksToKill = GameObject.FindGameObjectsWithTag ("Enemy");
+//			foreach (GameObject duckPrefab in ducksToKill) {
+//				loadDeadDuck ();
+//
+//				Destroy (duckPrefab);
+//			}
+
+//			if (gameObject.tag == "Enemy") {
+//				Destroy (gameObject);
+//			}
+//			Destroy (currentFireParticle);
 		} else {
 			// target has already been destroyed by user
 			Application.LoadLevel("WinLevel");
@@ -134,6 +161,28 @@ public class DuckController : MonoBehaviour {
 
 		}
 	} 
+
+	private void loadGameOver()
+	{
+		Application.LoadLevel ("GameOver");
+
+	}
+
+	private void loadWetDuck()
+	{
+		currentwetDuckPrefab = Instantiate(wetDuckPrefab, transform.position, transform.rotation);
+		Debug.Log("Instantiated a wet Duck at" + currentwetDuckPrefab.transform.position);
+//		Destroy(currentwetDuckPrefab,1f);
+	}
+
+	private void loadDeadDuck()
+	{
+		currentdeadDuckPrefab = Instantiate(deadDuckPrefab, transform.position, transform.rotation);
+		Debug.Log("Instantiated a dead Duck at" + currentdeadDuckPrefab.transform.position);
+//		Destroy (currentdeadDuckPrefab,1f);
+
+
+	}
 
 	private void EnforceBounds()
 	{
