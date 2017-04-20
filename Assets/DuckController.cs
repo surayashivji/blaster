@@ -14,7 +14,7 @@ public class DuckController : MonoBehaviour {
 	private Vector3 moveDirection;
 	public Vector3 a, b;
 	public float x1, x2;
-
+	public float timeToDeath = 30.0f;
 
 	[SerializeField]
 	private PolygonCollider2D[] colliders;
@@ -44,6 +44,8 @@ public class DuckController : MonoBehaviour {
 
 		gameObject.transform.position = Vector3.Lerp(currentPosition, target, 1f);
 
+		//Debug.Log ("radius of duck is" + gameObject.GetComponent<Renderer> ().bounds.extents.magnitude);
+
 //				a = gameObject.transform.position;
 //				x1 = a.x;
 //				b = target;
@@ -64,8 +66,90 @@ public class DuckController : MonoBehaviour {
 	void Start(){
 		moveDirection = Vector3.left;
 		spawnPoint = GameObject.Find("SpawnPoint").transform;
+		StartCoroutine(KillTarget(timeToDeath, this.gameObject));
 
 	}
+
+
+	void OnCollisionEnter(Collision collisionInfo)
+	{
+		if (collisionInfo.collider.tag == "sphere") {
+			Debug.Log ("Bullet hit duck");
+			Destroy (gameObject);
+		}
+	}
+
+	void OnCollisionStay(Collision collisionInfo)
+	{
+		print(gameObject.name + " and " + collisionInfo.collider.name + " are still colliding");
+	}
+
+	void OnCollisionExit(Collision collisionInfo)
+	{
+		print(gameObject.name + " and " + collisionInfo.collider.name + " are no longer colliding");
+	}
+
+	void OnBecameInvisible()
+	{ 
+		Destroy(gameObject);
+	}
+
+	private IEnumerator KillTarget(float seconds, GameObject obj) {
+		Debug.Log ("We know the duck is alive");
+		yield return new WaitForSeconds(seconds);
+		if (obj != null) {
+			// target has not been shot with sphere
+			// destroy target object and particle
+			// GAME OVER
+			Debug.Log ("duck hasn't been killed by sphere yet, so destroy");
+			Destroy (obj);
+			Application.LoadLevel ("GameOver");
+		} else {
+			// target has already been destroyed by user
+			Application.LoadLevel("WinLevel");
+			yield break;
+
+		}
+	} 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//	void OnTriggerEnter2D( Collider2D other )
+//	{
+//
+//		if(other.gameObject.tag == "sphere")
+//		{ 
+//			Destroy (gameObject);
+//
+//		}
+//	}
+//
+//	void OnCollisionEnter2D (Collision2D other)
+//	{
+//		if(other.gameObject.tag == "Enemy")
+//		{ 
+//			rb.AddRelativeForce( Vector3.Reflect(gameObject.transform.position, gameObject.transform.position));
+//			Debug.Log ("Hit other duck");
+//
+//		}
+//	}
+
+
+
 
 //	public Vector3 a, b;
 //	public float deltaTime = 1f / 30f, currentTime, x1, x2;

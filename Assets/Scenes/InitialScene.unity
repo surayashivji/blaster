@@ -120,6 +120,9 @@ MonoBehaviour:
   spherePrefab: {fileID: 1222676934703556, guid: 63d8a87ee82bf4b8db0301080207952e,
     type: 2}
   spawnObject: {fileID: 1925078691}
+  bounds:
+    m_Center: {x: 0, y: 0, z: 0}
+    m_Extent: {x: 0, y: 0, z: 0}
 --- !u!43 &267867099
 Mesh:
   m_ObjectHideFlags: 0
@@ -691,8 +694,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   targetPrefab: {fileID: 1271068745269454, guid: 73987a283da984d9eaf2f990fbd33d47,
     type: 2}
-  numOfInstances: 5
-  timeToSpawn: 2
+  numOfInstances: 3
+  timeToSpawn: 0
   distanceFromCamera: 60
   padding: 0.1
 --- !u!4 &1046025700

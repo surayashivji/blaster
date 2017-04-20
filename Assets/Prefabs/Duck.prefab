@@ -39,8 +39,8 @@ GameObject:
   - component: {fileID: 212223380788489802}
   - component: {fileID: 95039312153826502}
   - component: {fileID: 114435398429131058}
-  - component: {fileID: 60637030699601130}
-  - component: {fileID: 60031122047203200}
+  - component: {fileID: 135607051979776414}
+  - component: {fileID: 54708325879360882}
   m_Layer: 0
   m_Name: Duck
   m_TagString: Enemy
@@ -75,49 +75,21 @@ Transform:
   m_Father: {fileID: 4033901955706982}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!60 &60031122047203200
-PolygonCollider2D:
+--- !u!54 &54708325879360882
+Rigidbody:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1292501233335444}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_Offset: {x: 0, y: 0}
-  m_Points:
-    m_Paths:
-    - - {x: -0.17, y: 0.099999994}
-      - {x: -0.17, y: 0.02}
-      - {x: -0.16, y: -0.01}
-      - {x: 0.03, y: -0.099999994}
-      - {x: 0.17, y: -0.099999994}
-      - {x: 0.17, y: 0.08}
-      - {x: 0.14, y: 0.099999994}
---- !u!60 &60637030699601130
-PolygonCollider2D:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1292501233335444}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_Offset: {x: 0, y: 0}
-  m_Points:
-    m_Paths:
-    - - {x: -0.16, y: 0.12}
-      - {x: -0.17, y: 0.11}
-      - {x: -0.17, y: 0.02}
-      - {x: -0.049999997, y: -0.12}
-      - {x: 0.13, y: -0.12}
-      - {x: 0.17, y: -0.089999996}
-      - {x: 0.17, y: 0.099999994}
-      - {x: 0.07, y: 0.12}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 112
+  m_CollisionDetection: 0
 --- !u!95 &95039312153826502
 Animator:
   serializedVersion: 3
@@ -151,9 +123,22 @@ MonoBehaviour:
   b: {x: 0, y: 0, z: 0}
   x1: 0
   x2: 0
+  timeToDeath: 30
   colliders:
-  - {fileID: 60637030699601130}
-  - {fileID: 60031122047203200}
+  - {fileID: 0}
+  - {fileID: 0}
+--- !u!135 &135607051979776414
+SphereCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1292501233335444}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.17
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!198 &198704865446985406
 ParticleSystem:
   m_ObjectHideFlags: 1

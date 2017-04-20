@@ -42,6 +42,23 @@ public class Sphere : MonoBehaviour {
 
 			// destroy sphere
 			Destroy (this.gameObject);
+		} else if (collidedTarget.tag == "Enemy") {
+			// Destroy target
+			GetComponent<AudioSource>().PlayOneShot(bulletHitSound);
+			Destroy (collidedTarget);
+
+			// Destroy particle system on the target if it exists
+			Debug.Log("DESTROY PARTICLE!");
+			//			targetScript.destroyParticle ();
+
+			collidedTarget.GetComponent<TargetLogic> ().destroyParticle ();
+
+			//			Transform particleTransform = collisionInfo.collider.gameObject.transform.FindChild ("Fire Particle System");
+			//			GameObject particleObject = particleTransform.gameObject;
+			//			Destroy (particleObject);
+
+			// destroy sphere
+			Destroy (this.gameObject);
 		} else {
 			Debug.Log (collisionInfo.collider.name);
 		}

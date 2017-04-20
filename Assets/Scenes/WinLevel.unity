@@ -834,6 +834,7 @@ GameObject:
   - component: {fileID: 2060546156}
   - component: {fileID: 2060546155}
   - component: {fileID: 2060546154}
+  - component: {fileID: 2060546153}
   m_Layer: 5
   m_Name: NextLevel
   m_TagString: Untagged
@@ -860,6 +861,17 @@ RectTransform:
   m_AnchoredPosition: {x: -12, y: -187}
   m_SizeDelta: {x: 810, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &2060546153
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2060546151}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd5b19dba8a8c45a689aaa78a21bfd65, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &2060546154
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -898,7 +910,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2060546155}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2060546153}
+        m_MethodName: LoadbySceneName
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: LevelScene
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &2060546155
