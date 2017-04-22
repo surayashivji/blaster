@@ -257,7 +257,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 498330578}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ea0050a872a81404a84b4e56a5d58150, type: 3}
+  m_Script: {fileID: 11500000, guid: a7a00a659b79d4a5e815276e4ff6b67e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &498330581
@@ -307,7 +307,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: LevelScene
+          m_StringArgument: AchievementsScene
           m_BoolArgument: 0
         m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
@@ -631,7 +631,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1033127721}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ea0050a872a81404a84b4e56a5d58150, type: 3}
+  m_Script: {fileID: 11500000, guid: a7a00a659b79d4a5e815276e4ff6b67e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1181265419
@@ -739,7 +739,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -73, y: -171}
+  m_AnchoredPosition: {x: -73, y: -159}
   m_SizeDelta: {x: 601, y: 116}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1512962015
@@ -750,7 +750,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1512962013}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ea0050a872a81404a84b4e56a5d58150, type: 3}
+  m_Script: {fileID: 11500000, guid: a7a00a659b79d4a5e815276e4ff6b67e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &1512962016

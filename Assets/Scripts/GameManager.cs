@@ -14,12 +14,6 @@ public class GameManager : MonoBehaviour {
 		DontDestroyOnLoad (this.gameObject);
 
 		// after loading game content
-		ChangeScene("MenuScene");
-	}
-
-	// load scene from anywhere in the project
-	public void ChangeScene(string sceneName) 
-	{
-		SceneManager.LoadScene (sceneName);
+		SceneManager.LoadScene ("MenuScene");
 	}
 }

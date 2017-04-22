@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameSettings : MonoBehaviour {
+[System.Serializable]
+public class GameSettings {
 
 	private bool _musicOn;
 	private bool _soundOn;
