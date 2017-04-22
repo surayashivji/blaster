@@ -7,9 +7,6 @@ TagManager:
   - Fire
   - target_tag
   - fire_ps
-  - block
-  - backButton
-  - sphere
   layers:
   - Default
   - TransparentFX
