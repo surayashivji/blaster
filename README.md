@@ -1,16 +1,16 @@
-# Bubble Blaster
+# Blaster
 
 ![Unity Version](https://img.shields.io/badge/Unity-5.5.0-brightgreen.svg) [![License: MIT License](https://img.shields.io/github/license/mashape/apistatus.svg)](https://opensource.org/licenses/MIT)
 
 
-**Bubble Blaster** is an AR shooter game built with Unity and Vuforia.
+**Blaster** is an AR shooter game built with Unity and Vuforia.
 
 ## Installation
 
 #### Setup
 
 1. Clone Repository
-2. Print the Bubble Shooter AR Marker (Below)<br><br>
+2. Print the Shooter AR Marker (Below, acts as the gun)<br><br>
 <a href='https://drive.google.com/file/d/0B6aOEAXdWnEGVXNaYU9URFJCOWs/view?usp=sharing'> <img src='http://i.imgur.com/tGhO5qM.png' title='Marker' alt='Marker'/></a>
 
 #### iOS

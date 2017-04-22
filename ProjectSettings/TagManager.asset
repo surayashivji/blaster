@@ -7,6 +7,8 @@ TagManager:
   - Fire
   - target_tag
   - fire_ps
+  - sphere
+  - bg_music
   layers:
   - Default
   - TransparentFX

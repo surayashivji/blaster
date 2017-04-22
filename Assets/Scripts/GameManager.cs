@@ -6,7 +6,7 @@ using UnityEngine;
 public class GameManager : MonoBehaviour {
 
 	// Singleton GameManager
-	public static GameManager Instance{ set; get;}
+	public static GameManager Instance{ set; get; }
 
 	private void Awake() {
 		Instance = this;

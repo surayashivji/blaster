@@ -5,9 +5,6 @@ using UnityEngine;
 public class CollisionSound : MonoBehaviour {
 
 
-	//Volume: 0-1
-	//Magnitude: 
-
 	void OnCollisionStay(Collision col)
 	{
 		GetComponent<AudioSource>().volume = 1;
