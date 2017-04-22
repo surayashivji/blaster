@@ -35,6 +35,8 @@ public class SettingsManager : MonoBehaviour {
 		}
 	}
 
+	#region Setting Toggle Methods 
+
 	// music toggle clicked
 	public void OnMusicToggle() {
 		gameSettings.musicOn = !gameSettings.musicOn;
@@ -52,4 +54,6 @@ public class SettingsManager : MonoBehaviour {
 		gameSettings.colorBlindOn = !gameSettings.colorBlindOn;
 		SetButtonImage (colorBlindButton, gameSettings.colorBlindOn);
 	}
+
+	#endregion
 }

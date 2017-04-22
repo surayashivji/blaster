@@ -6,9 +6,10 @@ using UnityEngine;
 public class GameManager : MonoBehaviour {
 
 	// Singleton GameManager
-	public static GameManager Instance{ set; get; }
+	public static GameManager Instance { set; get; }
 
-	private void Awake() {
+	private void Awake() 
+	{
 		Instance = this;
 		DontDestroyOnLoad (this.gameObject);
 
@@ -17,7 +18,8 @@ public class GameManager : MonoBehaviour {
 	}
 
 	// load scene from anywhere in the project
-	public void ChangeScene(string sceneName) {
+	public void ChangeScene(string sceneName) 
+	{
 		SceneManager.LoadScene (sceneName);
 	}
 }

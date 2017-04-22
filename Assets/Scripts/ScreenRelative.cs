@@ -11,7 +11,8 @@ public class ScreenRelative : MonoBehaviour {
 
 
 	// Use this for initialization
-	void Start () {
+	void Start () 
+	{
 
 		Vector3 newPosition = transform.position;
 		Camera camera = Camera.main;
@@ -43,8 +44,6 @@ public class ScreenRelative : MonoBehaviour {
 		}
 		// 5
 		transform.position = newPosition;
-
-		
 	}
 	
 	// Update is called once per frame

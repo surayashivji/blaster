@@ -25,14 +25,16 @@ public class SpawnScript : MonoBehaviour {
 	private float zPos = 0;
 
 
-	IEnumerator Start () {
+	IEnumerator Start () 
+	{
 		// vuforia has no camera configuration callback so wait before using camera api
 		yield return new WaitForSeconds (2);
 		CalculateAvailablePositions ();
 		StartCoroutine (Spawn ());
 	}
 		
-	private void CalculateAvailablePositions() {
+	private void CalculateAvailablePositions() 
+	{
 		// find discrete x & y positions where the target prefab can be placed without overlapping with other targets
 		Camera camera = Camera.main;
 		// viewport coordinates control what percentage of the screen we want to spawn targets in
@@ -57,7 +59,8 @@ public class SpawnScript : MonoBehaviour {
 		Debug.Log ("BBb " + bottomLeft + " " + topRight);
 		Debug.Log (string.Format ("{0} {1} {2} {3}", minX, minY, maxX, maxY));
 
-		if (collider != null) {
+		if (collider != null) 
+		{
 			Vector2 sizeOffset = Vector2.zero;
 			Vector2 colliderCenterOffset = Vector2.zero;
 
@@ -83,19 +86,26 @@ public class SpawnScript : MonoBehaviour {
 		Destroy(target);
 
 		// create list of available positions
-		for (float x = minX; x <= maxX; x += objectSize.x + padding) {
-			for (float y = minY; y <= maxY; y += objectSize.y + padding) {
+		for (float x = minX; x <= maxX; x += objectSize.x + padding) 
+		{
+			for (float y = minY; y <= maxY; y += objectSize.y + padding)
+			{
 				availablePositions.Add(new Vector3(x,y,zPos));
 			}
 		}
 	}
 
-	private IEnumerator Spawn() {
-		if (availablePositions.Count < numOfInstances) {
+	private IEnumerator Spawn() 
+	{
+		if (availablePositions.Count < numOfInstances) 
+		{
 			Debug.LogError ("Number of prefabs requested is greater than available positions");
 			yield return null;
-		} else {
-			while (targetDict.Count != numOfInstances) {
+		} 
+		else 
+		{
+			while (targetDict.Count != numOfInstances) 
+			{
 				var target = Instantiate (targetPrefab) as GameObject;
 				SetPosition (target.transform);
 
@@ -107,18 +117,21 @@ public class SpawnScript : MonoBehaviour {
 
 	}
 
-	private void SetPosition(Transform t) {
+	private void SetPosition(Transform t) 
+	{
 		Vector3 proposedPosition = availablePositions [Random.Range (0, availablePositions.Count)];
 		availablePositions.Remove (proposedPosition);
 		t.position = proposedPosition;
 	}
 
 	// add position where the target was just destroyed back into list of available positions
-	public void ReclaimPosition(Vector3 position) {
+	public void ReclaimPosition(Vector3 position) 
+	{
 		availablePositions.Add (position);
 	}
 
-	private void OnDrawGizmosSelected() {
+	private void OnDrawGizmosSelected() 
+	{
 		Camera camera = Camera.main;
 		Vector3 bottomLeft = camera.ViewportToWorldPoint(new Vector3(0,0.3f,distanceFromCamera));
 		Vector3 topRight = camera.ViewportToWorldPoint (new Vector3 (1, 1, distanceFromCamera));

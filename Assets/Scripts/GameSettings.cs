@@ -3,18 +3,20 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class GameSettings : MonoBehaviour {
-	
+
 	private bool _musicOn;
 	private bool _soundOn;
 	private bool _colorBlindOn;
 
-	public GameSettings() {
+	public GameSettings() 
+	{
 		_musicOn = true;
 		_soundOn = true;
 		_colorBlindOn = false;
 	}
 
-	public bool musicOn {
+	public bool musicOn 
+	{
 		get { return _musicOn; }
 		set 
 		{  
@@ -30,7 +32,8 @@ public class GameSettings : MonoBehaviour {
 		}
 	}
 
-	public bool soundOn {
+	public bool soundOn 
+	{
 		get { return _soundOn; }
 		set 
 		{  
@@ -38,7 +41,8 @@ public class GameSettings : MonoBehaviour {
 		}
 	}
 
-	public bool colorBlindOn {
+	public bool colorBlindOn 
+	{
 		get { return _colorBlindOn; }
 		set 
 		{  

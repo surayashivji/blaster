@@ -9,19 +9,17 @@ public class DuckAnimator : MonoBehaviour {
 	private SpriteRenderer spriteRenderer;
 
 	// Use this for initialization
-	void Start () {
+	void Start () 
+	{
 		spriteRenderer = gameObject.GetComponent<SpriteRenderer> ();		
 	}
 	
 	// Update is called once per frame
-	void Update () {
-
-		//calculate number of frames that should render per second
-
+	void Update () 
+	{
+		// calculate number of frames that should render per second
 		int index = (int)(Time.timeSinceLevelLoad * framesPerSecond);
 		index = index % sprites.Length;
 		spriteRenderer.sprite = sprites[ index ];
-
-		
 	}
 }

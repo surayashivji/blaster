@@ -22,14 +22,16 @@ public class EnemyCreator : MonoBehaviour {
 
 	private float zPos = 0;
 
-	IEnumerator Start () {
+	IEnumerator Start () 
+	{
 		// vuforia has no camera configuration callback so wait before using camera api
 		yield return new WaitForSeconds (2);
 		CalculateAvailablePositions ();
 		StartCoroutine (Spawn ());
 	}
 
-	private void CalculateAvailablePositions() {
+	private void CalculateAvailablePositions() 
+	{
 		// find discrete x & y positions where the target prefab can be placed without overlapping with other targets
 		Camera camera = Camera.main;
 		// viewport coordinates control what percentage of the screen we want to spawn targets in
@@ -87,7 +89,8 @@ public class EnemyCreator : MonoBehaviour {
 		}
 	}
 
-	private IEnumerator Spawn() {
+	private IEnumerator Spawn() 
+	{
 		if (availablePositions.Count < numOfInstances) {
 			Debug.LogError ("Number of prefabs requested is greater than available positions");
 			yield return null;
@@ -104,14 +107,16 @@ public class EnemyCreator : MonoBehaviour {
 
 	}
 
-	private void SetPosition(Transform t) {
+	private void SetPosition(Transform t) 
+	{
 		Vector3 proposedPosition = availablePositions [Random.Range (0, availablePositions.Count)];
 		availablePositions.Remove (proposedPosition);
 		t.position = proposedPosition;
 	}
 
 	// add position where the target was just destroyed back into list of available positions
-	public void ReclaimPosition(Vector3 position) {
+	public void ReclaimPosition(Vector3 position)
+	{
 		availablePositions.Add (position);
 	}
 

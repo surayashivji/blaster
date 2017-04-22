@@ -9,7 +9,6 @@ public class CollisionSound : MonoBehaviour {
 	{
 		GetComponent<AudioSource>().volume = 1;
 		GetComponent<AudioSource>().Play ();
-		Debug.Log ("Audio played");
 	}
 
 }

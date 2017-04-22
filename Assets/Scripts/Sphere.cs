@@ -8,7 +8,8 @@ public class Sphere : MonoBehaviour {
 	public AudioClip bulletFireSound;
 	public AudioClip bulletHitSound;
 
-	void OnBecameInvisible() {
+	void OnBecameInvisible() 
+	{
 		DestroyObject(gameObject);
 	}
 
@@ -20,7 +21,8 @@ public class Sphere : MonoBehaviour {
 	}
 
 
-	void OnCollisionEnter(Collision collisionInfo) {
+	void OnCollisionEnter(Collision collisionInfo) 
+	{
 		// game object the sphere collided with
 		GameObject collidedTarget = collisionInfo.collider.gameObject;
 		Debug.Log("Detected collision between " + gameObject.name + " and " + collisionInfo.collider.name);
@@ -42,7 +44,9 @@ public class Sphere : MonoBehaviour {
 
 			// destroy sphere
 			Destroy (this.gameObject);
-		} else if (collidedTarget.tag == "Enemy") {
+		} 
+		else if (collidedTarget.tag == "Enemy") 
+		{
 			// Destroy target
 			GetComponent<AudioSource>().PlayOneShot(bulletHitSound);
 			Destroy (collidedTarget);
@@ -59,7 +63,9 @@ public class Sphere : MonoBehaviour {
 
 			// destroy sphere
 			Destroy (this.gameObject);
-		} else {
+		} 
+		else 
+		{
 			Debug.Log (collisionInfo.collider.name);
 		}
 	}

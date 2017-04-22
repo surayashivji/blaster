@@ -8,7 +8,8 @@ public class wetDuckController : MonoBehaviour {
 	public float y;
 
 	// Use this for initialization
-	void Start () {
+	void Start () 
+	{
 //		y = transform.position.y;
 //		InvokeRepeating("fallNow",3f,0.5f); 
 
@@ -16,8 +17,6 @@ public class wetDuckController : MonoBehaviour {
 	
 	// Logic for duck to fall after being hit with bubbles
 	void Update () {
-
-
 	}
 
 	void fallNow()

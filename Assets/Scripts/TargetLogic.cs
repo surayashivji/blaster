@@ -2,10 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class TargetLogic : MonoBehaviour {
-
-
 	public Text scoreText;
 
 	public int score;
@@ -34,21 +33,24 @@ public class TargetLogic : MonoBehaviour {
 		StartCoroutine(SetTargetOnFire(timeToFireMode, this.gameObject));
 	}
 
-	void Update(){
-		
-
+	void Update()
+	{
 	}
 
-	private IEnumerator SetTargetOnFire(float seconds, GameObject obj) {
+	private IEnumerator SetTargetOnFire(float seconds, GameObject obj) 
+	{
 		Debug.Log ("Target is normal, wait for seconds before setting on fire");
 		yield return new WaitForSeconds(seconds);
 		Debug.Log ("set target on fire if it hasn't already been shot at");
-		if (obj != null) {
+		if (obj != null)
+		{
 			targetBurning = true;
 			currentFireParticle = Instantiate(fireParticlePrefab, obj.transform.position, Quaternion.identity);
 //			currentFireParticle.transform.SetParent(obj.transform, false);
 			StartCoroutine(KillTarget(timeToDeath, obj));
-		} else {
+		} 
+		else 
+		{
 			// object has already been killed
 			Debug.Log("this target has already been killed no fire needed");
 			reclaimPositon (obj);
@@ -56,10 +58,12 @@ public class TargetLogic : MonoBehaviour {
 		}
 	}
 
-	private IEnumerator KillTarget(float seconds, GameObject obj) {
+	private IEnumerator KillTarget(float seconds, GameObject obj) 
+	{
 		Debug.Log ("We know the target is on fire");
 		yield return new WaitForSeconds(seconds);
-		if (obj != null) {
+		if (obj != null) 
+		{
 			// target has not been shot with sphere
 			// destroy target object and particle
 			// GAME OVER
@@ -67,20 +71,24 @@ public class TargetLogic : MonoBehaviour {
 			reclaimPositon (obj);
 			Destroy (obj);
 			Destroy (currentFireParticle);
-			Application.LoadLevel ("GameOver");
-		} else if (obj == null) {
+			SceneManager.LoadScene("GameOver");
+		} 
+		else if (obj == null) 
+		{
 			// target has already been destroyed by user
-			Application.LoadLevel("WinLevel");
+			SceneManager.LoadScene("WinLevel");
 			yield break;
 
 		}
 	} 
 
-	private void reclaimPositon(GameObject obj) {
+	private void reclaimPositon(GameObject obj) 
+	{
 		GameObject.FindObjectOfType<SpawnScript> ().ReclaimPosition (obj.transform.position);
 	}
 
-	public void destroyParticle() {
+	public void destroyParticle() 
+	{
 			Destroy (this.currentFireParticle);
 
 	}

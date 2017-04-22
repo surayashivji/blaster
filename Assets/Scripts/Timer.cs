@@ -9,12 +9,14 @@ public class Timer : MonoBehaviour {
 	private float myTimer = 30;
 
 	// Use this for initialization
-	void Start () {
+	void Start () 
+	{
 		timerText = GetComponent<Text> ();
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	void Update () 
+	{
 		myTimer -= Time.deltaTime;
 		timerText.text = myTimer.ToString ("f0");
 	}

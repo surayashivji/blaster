@@ -11,14 +11,16 @@ public class GunController : MonoBehaviour {
 	public Bounds bounds;
 
 
-	void Start() {
+	void Start() 
+	{
 		supportsMultiTouch = Input.multiTouchEnabled;
 	}
 
 
 	
 	// Update is called once per frame
-	private void Update () {
+	private void Update () 
+	{
 
 		int numTouches = Input.touchCount;
 		if (numTouches > 0) {
@@ -41,7 +43,8 @@ public class GunController : MonoBehaviour {
 //		}
 	}
 
-	public void spawnSphere() {
+	public void spawnSphere() 
+	{
 		// create object and give it force depending on image tracker on gon position/rotation
 		// create game object @ position/rotation of gun
 		GameObject go = Instantiate (spherePrefab, spawnObject.position, spawnObject.rotation) as GameObject;

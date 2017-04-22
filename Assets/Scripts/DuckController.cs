@@ -1,12 +1,7 @@
-﻿      
-
-
-
-
-
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class DuckController : MonoBehaviour {
 
@@ -14,6 +9,7 @@ public class DuckController : MonoBehaviour {
 	private Vector3 moveDirection;
 	public Vector3 a, b;
 	public float x1, x2;
+
 	// time it takes for target to go into fire mode
 	public float timeToFireMode = 0f;
 
@@ -59,7 +55,8 @@ public class DuckController : MonoBehaviour {
 
 
 
-	void Update(){
+	void Update()
+	{
 	
 		Vector3 currentPosition = transform.position;
 
@@ -72,21 +69,20 @@ public class DuckController : MonoBehaviour {
 
 		gameObject.transform.position = Vector3.Lerp(currentPosition, target, 1f);
 
-	
-	
 	}
 
 
-	void Start(){
+	void Start()
+	{
 		moveDirection = Vector3.left;
 		spawnPoint = GameObject.Find("SpawnPoint").transform;
 		targetBurning = false;
 		StartCoroutine(SetTargetOnFire(timeToFireMode, this.gameObject));
 		StartCoroutine(KillTarget(timeToDeath, this.gameObject));
-
 	}
 
-	private IEnumerator SetTargetOnFire(float seconds, GameObject obj) {
+	private IEnumerator SetTargetOnFire(float seconds, GameObject obj) 
+	{
 		Debug.Log ("Target is normal, wait for seconds before setting on fire");
 		yield return new WaitForSeconds(seconds);
 		Debug.Log ("set target on fire if it hasn't already been shot at");
@@ -139,7 +135,7 @@ public class DuckController : MonoBehaviour {
 			Debug.Log ("duck hasn't been killed by sphere yet, so destroy");
 			loadDeadDuck ();
 			Destroy (obj);
-			Application.LoadLevel ("GameOver");
+			SceneManager.LoadScene("GameOver");
 
 //
 //			GameObject[] ducksToKill;
@@ -156,7 +152,7 @@ public class DuckController : MonoBehaviour {
 //			Destroy (currentFireParticle);
 		} else {
 			// target has already been destroyed by user
-			Application.LoadLevel("WinLevel");
+			SceneManager.LoadScene("WinLevel");
 			yield break;
 
 		}
@@ -164,7 +160,7 @@ public class DuckController : MonoBehaviour {
 
 	private void loadGameOver()
 	{
-		Application.LoadLevel ("GameOver");
+		SceneManager.LoadScene("GameOver");
 
 	}
 
@@ -186,17 +182,14 @@ public class DuckController : MonoBehaviour {
 
 	private void EnforceBounds()
 	{
-		// 1
 		Vector3 newPosition = transform.position; 
 		Camera mainCamera = Camera.main;
 		Vector3 cameraPosition = mainCamera.transform.position;
 
-		// 2
 		float xDist = mainCamera.aspect * mainCamera.orthographicSize; 
 		float xMax = cameraPosition.x + xDist;
 		float xMin = cameraPosition.x - xDist;
 
-		// 3
 		if ( newPosition.x < xMin || newPosition.x > xMax ) {
 			newPosition.x = Mathf.Clamp( newPosition.x, xMin, xMax );
 			moveDirection.x = -moveDirection.x;
@@ -209,25 +202,9 @@ public class DuckController : MonoBehaviour {
 			newPosition.y = Mathf.Clamp( newPosition.y, -yMax, yMax );
 			moveDirection.y = -moveDirection.y;
 		}
-
-
-		// 4
+			
 		transform.position = newPosition;
 	}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 //	void OnTriggerEnter2D( Collider2D other )
