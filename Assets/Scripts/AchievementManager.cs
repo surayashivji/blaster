@@ -8,6 +8,7 @@ public class AchievementManager : MonoBehaviour {
 	public GameObject achievementPrefab;
 
 	public Sprite[] iconSprites;
+	public Sprite[] toggleSprites;
 
 	public GameObject displayedAchievement;
 
@@ -15,6 +16,7 @@ public class AchievementManager : MonoBehaviour {
 	public Dictionary<string, Achievement> achievements = new Dictionary<string, Achievement>();
 
 	public Sprite unlockedSprite;
+	public Sprite starSprite;
 
 	private static AchievementManager instance;
 
@@ -32,16 +34,19 @@ public class AchievementManager : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		//PlayerPrefs.DeleteAll();
-		InstantiateAchievement ("AchievementList", "Amateur", "Beat Level 1 to unlock!", 0);
+		 PlayerPrefs.DeleteAll();
+		// instantiate all available achivements
+		InstantiateAchievement ("AchievementList", "Amateur", "Complete the tutorial to unlock!", 0);
+		InstantiateAchievement ("AchievementList", "Superstar", "Beat Level 1 to unlock!", 1);
+		InstantiateAchievement ("AchievementList", "Trojan", "Beat Level 2 to unlock!", 2);
+		InstantiateAchievement ("AchievementList", "Max Nikkas", "It's a secret!", 3);
 	}
 
 	void Update() {
-// Example of setting an achievement for earning
-//		if (Input.GetKeyDown (KeyCode.W)) {
-//			EarnAchievement("Amateur");
-//		}
-		// 
+		//EarnAchievement("Amateur");
+		if (Input.GetKeyDown (KeyCode.W)) {
+		EarnAchievement("Amateur");
+			}
 	}
 
 	public void EarnAchievement(string title) 
@@ -49,8 +54,8 @@ public class AchievementManager : MonoBehaviour {
 		if (achievements [title].canEarnAchievement()) 
 		{
 			// achivement earned, instantiate the achivement on the screen and then remove
-			GameObject a = (GameObject)Instantiate(displayedAchievement);
-			SetAchievementInfo ("EarnCanvas", a, title);
+//			GameObject a = (GameObject)Instantiate(displayedAchievement);
+//			SetAchievementInfo ("EarnCanvas", a, title);
 		}
 	}
 
@@ -70,7 +75,6 @@ public class AchievementManager : MonoBehaviour {
 		a.transform.GetChild (0).GetComponent<Text> ().text = title;
 		a.transform.GetChild (1).GetComponent<Text> ().text = achievements[title].Description;
 		a.transform.GetChild (2).GetComponent<Image> ().sprite = iconSprites [achievements[title].SpriteIndex];
+		a.transform.GetChild (3).GetComponent<Image>().sprite = toggleSprites [0];
 	}
 }
-
-// EarnAchievement("Amateur");

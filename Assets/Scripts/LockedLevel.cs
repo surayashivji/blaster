@@ -13,7 +13,7 @@ public class LockLevel : MonoBehaviour {
 	void Start ()
 	{
 		PlayerPrefs.DeleteAll(); // erase data on start
-		LockLevels();   //call function LockLevels
+		LockLevels();   // call function LockLevels
 	}
 	  
 	 // function to lock the levels
@@ -27,9 +27,9 @@ public class LockLevel : MonoBehaviour {
 				worldIndex  = (i+1);
 				levelIndex  = (j+1);
 				// create a PlayerPrefs of that particular level and world and set it's to 0, if no key of that name exists
-				if(!PlayerPrefs.HasKey("level"+worldIndex.ToString() +":" +levelIndex.ToString()))
+				if(!PlayerPrefs.HasKey("level" + worldIndex.ToString() +":" +levelIndex.ToString()))
 				{
-					PlayerPrefs.SetInt("level"+worldIndex.ToString() +":" +levelIndex.ToString(),0);
+					PlayerPrefs.SetInt("level" + worldIndex.ToString() +":" +levelIndex.ToString(),0);
 				}
 			}
 		}

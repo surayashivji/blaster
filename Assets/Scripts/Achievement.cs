@@ -51,12 +51,14 @@ public class Achievement {
 		if (!unlocked) 
 		{
 			achivementReference.GetComponent<Image> ().sprite = AchievementManager.Instance.unlockedSprite;
+			achivementReference.transform.GetChild (3).GetComponent<Image>().sprite = AchievementManager.Instance.starSprite;
 			PersistAchievement (true);
 			return true;
 		}
 		return false;
 	}
 
+	// save achivement to player preferences for persistence
 	public void PersistAchievement(bool value) 
 	{
 		unlocked = value;
@@ -65,6 +67,7 @@ public class Achievement {
 		PlayerPrefs.Save ();
 	}
 
+	// load achivement info from player preferences
 	public void LoadAchievement()
 	{
 		unlocked = PlayerPrefs.GetInt (name) == 1 ? true : false;
@@ -72,6 +75,8 @@ public class Achievement {
 		{
 			// change menu sprite to orange
 			achivementReference.GetComponent<Image> ().sprite = AchievementManager.Instance.unlockedSprite;
+			// change toggle to star
+			achivementReference.transform.GetChild (3).GetComponent<Image>().sprite = AchievementManager.Instance.starSprite;
 		}
 	}
 }

@@ -7,19 +7,17 @@ EditorBuildSettings:
   m_Scenes:
   - enabled: 1
     path: Assets/Scenes/PreLoader.unity
-  - enabled: 0
-    path: Assets/Scenes/menuuuuu.unity
   - enabled: 1
-    path: Assets/Scenes/LevelScene.unity
+    path: Assets/Scenes/levelll.unity
   - enabled: 1
     path: Assets/Scenes/InitialScene.unity
   - enabled: 1
-    path: Assets/Scenes/GameOver.unity
-  - enabled: 1
     path: Assets/Scenes/DuckScene.unity
-  - enabled: 1
-    path: Assets/Scenes/settins.unity
   - enabled: 1
     path: Assets/Scenes/MenuScene.unity
   - enabled: 1
     path: Assets/Scenes/SettingsScene.unity
+  - enabled: 1
+    path: Assets/Scenes/AchievementsScene.unity
+  - enabled: 1
+    path: Assets/Scenes/LevelScene.unity

@@ -126,9 +126,13 @@ MonoBehaviour:
   - {fileID: 21300000, guid: c4eae279de43e441f8471f1287dd979a, type: 3}
   - {fileID: 21300000, guid: 335ffeedcea45472087fcc9090d7bb5a, type: 3}
   - {fileID: 21300000, guid: 7b332d409b489488089ea93117cc5467, type: 3}
+  toggleSprites:
+  - {fileID: 21300000, guid: 0ffb7ddde5a604266b2f73e7173c1836, type: 3}
+  - {fileID: 21300000, guid: 877c90f2a4e6c4fbcae121d0bc0f5efe, type: 3}
   displayedAchievement: {fileID: 1644618291297866, guid: e2da1bb5bccf84ec8aa40dab29974c62,
     type: 2}
   unlockedSprite: {fileID: 21300000, guid: 140ea6f900ad1496cabe5abd85e0dd13, type: 3}
+  starSprite: {fileID: 21300000, guid: 877c90f2a4e6c4fbcae121d0bc0f5efe, type: 3}
 --- !u!4 &69359563
 Transform:
   m_ObjectHideFlags: 0
