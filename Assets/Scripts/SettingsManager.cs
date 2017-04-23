@@ -8,7 +8,6 @@ public class SettingsManager : MonoBehaviour {
 	// references to UI Controls
 	public Button musicButton;
 	public Button soundButton;
-	public Button colorBlindButton;
 
 	// possible sprites for toggle
 	public Sprite targetSprite;
@@ -22,7 +21,6 @@ public class SettingsManager : MonoBehaviour {
 		// initalize sprites according to game setting values
 		SetButtonImage (musicButton, gameSettings.musicOn);
 		SetButtonImage (soundButton, gameSettings.soundOn);
-		SetButtonImage (colorBlindButton, gameSettings.colorBlindOn);
 	}
 
 	public void SetButtonImage(Button btn, bool toggleValue) {
@@ -49,10 +47,9 @@ public class SettingsManager : MonoBehaviour {
 		SetButtonImage (soundButton, gameSettings.soundOn);
 	}
 
-	// color blind toggle clicked
-	public void OnColorBlindToggle() {
-		gameSettings.colorBlindOn = !gameSettings.colorBlindOn;
-		SetButtonImage (colorBlindButton, gameSettings.colorBlindOn);
+	// reset achivement progress
+	public void OnResetClicked() {
+		PlayerPrefs.DeleteAll();
 	}
 
 	#endregion

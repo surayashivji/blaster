@@ -53,8 +53,6 @@ public class DuckController : MonoBehaviour {
 		colliders[currentColliderIndex].enabled = true;
 	}
 
-
-
 	void Update()
 	{
 	

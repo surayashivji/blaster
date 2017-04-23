@@ -41,19 +41,4 @@ public class GameSettings {
 			_soundOn = value;
 		}
 	}
-
-	public bool colorBlindOn 
-	{
-		get { return _colorBlindOn; }
-		set 
-		{  
-			_colorBlindOn = value;
-			if (value) {
-				// set color blind mode on
-			} 
-			else {
-				// set color blind mode off
-			}
-		}
-	}
 }
