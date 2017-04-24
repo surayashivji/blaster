@@ -5,15 +5,17 @@ using UnityEngine;
 [System.Serializable]
 public class GameSettings {
 
+	#region PRIVATE_VARIABLES
+
 	private bool _musicOn;
 	private bool _soundOn;
-	private bool _colorBlindOn;
+
+	#endregion
 
 	public GameSettings() 
 	{
 		_musicOn = true;
 		_soundOn = true;
-		_colorBlindOn = false;
 	}
 
 	public bool musicOn 

@@ -49,6 +49,10 @@ public class AchievementManager : MonoBehaviour {
 			}
 	}
 
+	/// <summary>
+	/// Called when a user earns a specific achievement
+	/// @param title: title of the achivement earned
+	/// </summary>
 	public void EarnAchievement(string title) 
 	{
 		if (achievements [title].canEarnAchievement()) 
@@ -59,6 +63,9 @@ public class AchievementManager : MonoBehaviour {
 		}
 	}
 
+	/// <summary>
+	/// Creates an achivement based on a parent in the hierarchy, title, description, and icon sprite index
+	/// </summary>
 	public void InstantiateAchievement(string parent, string title, string description, int spriteIndex)
 	{
 		// create new achievement
@@ -68,6 +75,9 @@ public class AchievementManager : MonoBehaviour {
 		SetAchievementInfo (parent, a, title);
 	}
 
+	/// <summary>
+	/// Sets the visual information of an achivement based on the title
+	/// </summary>
 	public void SetAchievementInfo(string parent, GameObject a, string title) {
 		a.transform.SetParent (GameObject.Find (parent).transform);
 		// set achievement info

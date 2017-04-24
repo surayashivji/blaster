@@ -21,10 +21,12 @@ public class vbScript : MonoBehaviour, IVirtualButtonEventHandler  {
 
 	#region IVirtualButtonEventHandler Interface Methods
 
+	/// <summary>
+	/// Fired when the Virtual Button is pressed on the AR marker
+	/// @param vb: behavior received from virtual button
+	/// </summary>
 	public void OnButtonPressed(VirtualButtonAbstractBehaviour vb) 
 	{
-		Debug.Log ("Virtual Button Pressed");
-
 		gameObject.GetComponentInParent<GunController>().spawnSphere();
 	}
 

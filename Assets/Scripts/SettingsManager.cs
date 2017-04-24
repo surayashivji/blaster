@@ -35,19 +35,26 @@ public class SettingsManager : MonoBehaviour {
 
 	#region Setting Toggle Methods 
 
-	// music toggle clicked
+	/// <summary>
+	/// Fired when the background music toggle is clicked
+	/// </summary>
 	public void OnMusicToggle() {
 		gameSettings.musicOn = !gameSettings.musicOn;
 		SetButtonImage (musicButton, gameSettings.musicOn);
 	}
 
-	// sound toggle clicked
+	/// <summary>
+	/// Fired when the song toggle is clicked
+	/// </summary>
 	public void OnSoundToggle() {
 		gameSettings.soundOn = !gameSettings.soundOn;
 		SetButtonImage (soundButton, gameSettings.soundOn);
 	}
 
-	// reset achivement progress
+	/// <summary>
+	/// Fired when the user resets his/her game progress
+	/// Clears all achivement progress and deletes all player preferences
+	/// </summary>
 	public void OnResetClicked() {
 		PlayerPrefs.DeleteAll();
 	}

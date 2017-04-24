@@ -33,10 +33,11 @@ public class TargetLogic : MonoBehaviour {
 		StartCoroutine(SetTargetOnFire(timeToFireMode, this.gameObject));
 	}
 
-	void Update()
-	{
-	}
-
+	/// <summary>
+	/// Sets the target on fire by attaching a fire particle system to the game object
+	/// @param seconds: number of seconds before setting the target on fire
+	/// @param obj: target object to set on fire
+	/// </summary>
 	private IEnumerator SetTargetOnFire(float seconds, GameObject obj) 
 	{
 		Debug.Log ("Target is normal, wait for seconds before setting on fire");
@@ -46,7 +47,6 @@ public class TargetLogic : MonoBehaviour {
 		{
 			targetBurning = true;
 			currentFireParticle = Instantiate(fireParticlePrefab, obj.transform.position, Quaternion.identity);
-//			currentFireParticle.transform.SetParent(obj.transform, false);
 			StartCoroutine(KillTarget(timeToDeath, obj));
 		} 
 		else 
@@ -58,6 +58,11 @@ public class TargetLogic : MonoBehaviour {
 		}
 	}
 
+	/// <summary>
+	/// Sets the target on fire by attaching a fire particle system to the game object
+	/// @param seconds: number of seconds before setting the target on fire
+	/// @param obj: target object to set on fire
+	/// </summary>
 	private IEnumerator KillTarget(float seconds, GameObject obj) 
 	{
 		Debug.Log ("We know the target is on fire");
@@ -82,6 +87,10 @@ public class TargetLogic : MonoBehaviour {
 		}
 	} 
 
+	/// <summary>
+	/// After a target is hit by the user, the position it held is able to be used again
+	/// @param obj: game object that was killed with the position we need to recycle back in
+	/// </summary>
 	private void reclaimPositon(GameObject obj) 
 	{
 		GameObject.FindObjectOfType<SpawnScript> ().ReclaimPosition (obj.transform.position);
@@ -89,7 +98,7 @@ public class TargetLogic : MonoBehaviour {
 
 	public void destroyParticle() 
 	{
-			Destroy (this.currentFireParticle);
+		Destroy (this.currentFireParticle);
 
 	}
 

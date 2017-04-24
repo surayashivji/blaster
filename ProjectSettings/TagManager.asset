@@ -9,6 +9,8 @@ TagManager:
   - fire_ps
   - sphere
   - bg_music
+  - deadDuck
+  - LevelButton
   layers:
   - Default
   - TransparentFX
