@@ -20,7 +20,7 @@ public class LevelManager : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-//		PlayerPrefs.DeleteAll ();
+		// PlayerPrefs.DeleteAll ();
 		PopulateLevels ();
 	}
 
@@ -74,10 +74,7 @@ public class LevelManager : MonoBehaviour {
 	}
 
 	private void SaveInitialValues()
-	{
-//		if (PlayerPrefs.HasKey ("Level1")) {
-//			return;
-//		} 
+	{ 
 		GameObject[] allButtons = GameObject.FindGameObjectsWithTag ("LevelButton");
 		foreach (GameObject obj in allButtons) {
 			LevelButton b = obj.GetComponent<LevelButton> ();

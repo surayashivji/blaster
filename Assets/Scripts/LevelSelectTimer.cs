@@ -6,25 +6,46 @@ using UnityEngine;
 public class LevelSelectTimer : MonoBehaviour {
 
 	int score = 500;
+	private int numLevels = 4;
+	private int currentLevel;
 
 	// Use this for initialization
 	void Start () {
-		PlayerPrefs.SetInt ("Level2", 1);
-		PlayerPrefs.SetInt ("Level1_score", score);
-		PlayerPrefs.Save ();
-		Debug.Log ("b somethin");
-		Debug.Log (PlayerPrefs.GetInt ("Level2"));
+		ConfigureCurrentLevel();
 		StartCoroutine (Time ());
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
 	}
 
 	private IEnumerator Time()
 	{
 		yield return new WaitForSeconds (2);
 		SceneManager.LoadScene (7);
+	}
+
+	private void ConfigureCurrentLevel()
+	{
+		for (int x = 1; x < numLevels; x++) 
+		{
+			if (SceneManager.GetActiveScene ().name == "Level" + x) 
+			{
+				currentLevel = x;
+				SaveGameState ();
+			}
+		}
+	}
+
+	private void SaveGameState()
+	{
+		int nextLevel = currentLevel + 1;
+		if (nextLevel < currentLevel) {
+			// unlock next level, make it active
+			PlayerPrefs.SetInt ("Level" + nextLevel.ToString (), 1);
+			PlayerPrefs.SetInt ("Level" + currentLevel.ToString () + "_score", score);
+			PlayerPrefs.Save ();
+		} 
+		else 
+		{
+			PlayerPrefs.SetInt ("Level" + currentLevel.ToString () + "_score", score);
+			PlayerPrefs.Save ();
+		}
 	}
 }

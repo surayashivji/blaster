@@ -7,7 +7,6 @@ public class LevelButton : MonoBehaviour {
 
 	public Text levelNumberText;
 	public int buttonUnlocked;
-
 	public GameObject star1;
 	public GameObject star2;
 	public GameObject star3;
