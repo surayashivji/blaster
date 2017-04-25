@@ -31,8 +31,6 @@ public class ScoreManager : MonoBehaviour {
 			if (SceneManager.GetActiveScene ().name == "Level" + x) 
 			{
 				currentLevel = x;
-				Debug.Log ("Current level is " + currentLevel.ToString ());
-				Debug.Log ("(SHOULD BE 1)");
 			}
 		}
 	}

@@ -54,19 +54,37 @@ public class LevelManager : MonoBehaviour {
 			b.GetComponent<Button> ().onClick.AddListener (() => LoadLevel ("Level" + b.levelNumberText.text)); 
 
 			// set number of earned stars according to score
+			int currLevelIndex = int.Parse(b.levelNumberText.text);
+			Debug.Log ("CURR LEVEL INDEX " + currLevelIndex);
 			int persistedScore = PlayerPrefs.GetInt ("Level" + b.levelNumberText.text + "_score");
-			if (persistedScore > 0) 
+
+			switch (currLevelIndex) 
 			{
-				b.star1.SetActive(true);
-				if (persistedScore > 200) 
+			case 1: // level 1
+				if (persistedScore > 50) 
 				{
-					b.star2.SetActive(true);
-					if (persistedScore > 400) 
+					b.star1.SetActive(true);
+					if (persistedScore > 100) 
 					{
-						b.star3.SetActive(true);
+						b.star2.SetActive(true);
+						if (persistedScore > 250) 
+						{
+							b.star3.SetActive(true);
+						}
 					}
 				}
+				break;
+			case 2: // level 2
+				break;
+			case 3: // level 3
+				break;
+			case 4: // level 4
+				break;
+			default:
+				break;
 			}
+
+
 			// make level button prefab a child of the layout spacer
 			levelButton.transform.SetParent (spacer);
 		}
