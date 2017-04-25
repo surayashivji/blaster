@@ -24,10 +24,6 @@ public class TargetLogic : MonoBehaviour {
 	private ScoreManager scoreManager;
 	private Timer timer;
 
-	public int count = 5;
-
-
-
 	// Use this for initialization
 	void Start () {
 		targetBurning = false;
@@ -39,9 +35,13 @@ public class TargetLogic : MonoBehaviour {
 
 	void Update() 
 	{
+		Debug.Log ("okk");
+		Debug.Log ("\n");
+		Debug.Log (timer.myTimer);
 		if (timer.myTimer < 1) 
 		{
-			PrepareForNextLevel ();
+			Debug.Log ("HELLO");
+//			PrepareForNextLevel ();
 			SceneManager.LoadScene("WinLevel");
 		}
 	}

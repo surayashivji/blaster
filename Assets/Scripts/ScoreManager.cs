@@ -57,6 +57,7 @@ public class ScoreManager : MonoBehaviour {
 	/// </summary>
 	public void SaveGameState()
 	{
+		Debug.Log ("Saving game state!");
 		int nextLevel = currentLevel + 1;
 		if (nextLevel < currentLevel) {
 			// unlock next level, make it active

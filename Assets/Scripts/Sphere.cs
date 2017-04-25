@@ -29,16 +29,12 @@ public class Sphere : MonoBehaviour {
 		Debug.Log (collidedTarget.tag);
 		if (collidedTarget.tag == "target_tag") {
 
-			collidedTarget.GetComponent<TargetLogic> ().count--;
-//
-			Debug.Log ("COUNT " + collidedTarget.GetComponent<TargetLogic> ().count);
-
 			// Destroy target
 			GetComponent<AudioSource>().PlayOneShot(bulletHitSound);
 			Destroy (collidedTarget);
 
 			// Destroy particle system on the target if it exists
-			Debug.Log("DESTROY PARTICLE!");
+			Debug.Log("Destroy Particle!");
 			collidedTarget.GetComponent<TargetLogic> ().destroyParticle ();
 			collidedTarget.GetComponent<TargetLogic> ().AddToScore (50);
 
@@ -46,16 +42,12 @@ public class Sphere : MonoBehaviour {
 			{
 				collidedTarget.GetComponent<TargetLogic> ().AddToScore (30);
 			}
-//			collidedTarget.GetComponent<TargetLogic> ().PrepareForNextLevel ();
-//
+
 			// destroy sphere
 			Destroy (this.gameObject);
 		} 
 		else if (collidedTarget.tag == "Enemy") 
 		{
-			collidedTarget.GetComponent<TargetLogic> ().count--;
-			//
-			Debug.Log ("COUNT " + collidedTarget.GetComponent<TargetLogic> ().count);
 
 			// Destroy target
 			GetComponent<AudioSource>().PlayOneShot(bulletHitSound);
