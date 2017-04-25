@@ -37,9 +37,11 @@ public class SpawnScript : MonoBehaviour {
 	{
 		// find discrete x & y positions where the target prefab can be placed without overlapping with other targets
 		Camera camera = Camera.main;
+
 		// viewport coordinates control what percentage of the screen we want to spawn targets in
 		Vector3 bottomLeft = camera.ViewportToWorldPoint(new Vector3(0,0.3f,distanceFromCamera));
 		Vector3 topRight = camera.ViewportToWorldPoint (new Vector3 (1, 1, distanceFromCamera));
+
 		float minX = bottomLeft.x;
 		float maxX = topRight.x;
 		float minY = bottomLeft.y;
@@ -56,8 +58,7 @@ public class SpawnScript : MonoBehaviour {
 
 		Vector2 objectSize = Vector2.zero;
 
-		Debug.Log ("BBb " + bottomLeft + " " + topRight);
-		Debug.Log (string.Format ("{0} {1} {2} {3}", minX, minY, maxX, maxY));
+		// Debug.Log (string.Format ("{0} {1} {2} {3}", minX, minY, maxX, maxY));
 
 		if (collider != null) 
 		{
@@ -109,12 +110,11 @@ public class SpawnScript : MonoBehaviour {
 				var target = Instantiate (targetPrefab) as GameObject;
 				SetPosition (target.transform);
 
-				//add to list
+				// add target to list
 				targetDict.Add (target.transform.position, target);
 				yield return new WaitForSeconds(Random.Range(timeToSpawn, 2 * timeToSpawn));
 			}
 		}
-
 	}
 
 	private void SetPosition(Transform t) 

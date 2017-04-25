@@ -39,13 +39,8 @@ public class LevelSelectTimer : MonoBehaviour {
 		if (nextLevel < currentLevel) {
 			// unlock next level, make it active
 			PlayerPrefs.SetInt ("Level" + nextLevel.ToString (), 1);
-			PlayerPrefs.SetInt ("Level" + currentLevel.ToString () + "_score", score);
-			PlayerPrefs.Save ();
 		} 
-		else 
-		{
-			PlayerPrefs.SetInt ("Level" + currentLevel.ToString () + "_score", score);
-			PlayerPrefs.Save ();
-		}
+		PlayerPrefs.SetInt ("Level" + currentLevel.ToString () + "_score", score);
+		PlayerPrefs.Save ();
 	}
 }

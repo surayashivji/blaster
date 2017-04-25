@@ -6,6 +6,7 @@ using UnityEngine.EventSystems;
 
 public class LevelManager : MonoBehaviour {
 
+	#region LEVEL_OBJECT
 	[System.Serializable]
 	public class Level 
 	{
@@ -13,18 +14,22 @@ public class LevelManager : MonoBehaviour {
 		public int unlocked; 
 		public bool isInteractable;
 	}
+	#endregion // LEVEL_OBJECT
 
 	public GameObject button; 
 	public Transform spacer;
 	public List<Level> levels;
 
-	// Use this for initialization
+
 	void Start () {
 		// PlayerPrefs.DeleteAll ();
 		PopulateLevels ();
 	}
 
-	void PopulateLevels()
+	/// <summary>
+	/// Fill in default info for each level (unlocked if not level 1, no earned stars)
+	/// </summary>
+	private void PopulateLevels()
 	{
 		foreach(var level in levels)
 		{
@@ -48,31 +53,29 @@ public class LevelManager : MonoBehaviour {
 			b.GetComponent<Button>().interactable = level.isInteractable;
 			b.GetComponent<Button> ().onClick.AddListener (() => LoadLevel ("Level" + b.levelNumberText.text)); 
 
-			if (PlayerPrefs.GetInt ("Level" + b.levelNumberText.text + "_score") > 0) 
+			// set number of earned stars according to score
+			int persistedScore = PlayerPrefs.GetInt ("Level" + b.levelNumberText.text + "_score");
+			if (persistedScore > 0) 
 			{
-				// one star
 				b.star1.SetActive(true);
+				if (persistedScore > 200) 
+				{
+					b.star2.SetActive(true);
+					if (persistedScore > 400) 
+					{
+						b.star3.SetActive(true);
+					}
+				}
 			}
-
-			if (PlayerPrefs.GetInt ("Level" + b.levelNumberText.text + "_score") > 200) 
-			{
-				// two stars
-				b.star1.SetActive(true);
-				b.star2.SetActive(true);
-			}
-			if (PlayerPrefs.GetInt ("Level" + b.levelNumberText.text + "_score") > 400) 
-			{
-				// 3 stars
-				b.star1.SetActive(true);
-				b.star2.SetActive(true);
-				b.star3.SetActive(true);
-			}
-
+			// make level button prefab a child of the layout spacer
 			levelButton.transform.SetParent (spacer);
 		}
 		SaveInitialValues ();
 	}
 
+	/// <summary>
+	/// Persist default information for each level
+	/// </summary>
 	private void SaveInitialValues()
 	{ 
 		GameObject[] allButtons = GameObject.FindGameObjectsWithTag ("LevelButton");
@@ -82,7 +85,11 @@ public class LevelManager : MonoBehaviour {
 			PlayerPrefs.Save ();
 		}
 	}
-
+		
+	/// <summary>
+	/// Loads a level
+	/// @param val: name of level to load
+	/// </summary>
 	void LoadLevel(string val)
 	{
 		Application.LoadLevel (val);

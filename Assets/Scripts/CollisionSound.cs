@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class CollisionSound : MonoBehaviour {
 
-
-	void OnCollisionStay(Collision col)
+	private void OnCollisionStay(Collision col)
 	{
 		GetComponent<AudioSource>().volume = 1;
 		GetComponent<AudioSource>().Play ();

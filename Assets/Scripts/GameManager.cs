@@ -8,6 +8,8 @@ public class GameManager : MonoBehaviour {
 	// Singleton GameManager
 	public static GameManager Instance { set; get; }
 
+	private bool isPaused;
+
 	private void Awake() 
 	{
 		Instance = this;
@@ -15,5 +17,12 @@ public class GameManager : MonoBehaviour {
 
 		// after loading game content
 		SceneManager.LoadScene ("MenuScene");
+
+		isPaused = false;
+	}
+
+	private void TogglePause()
+	{
+		isPaused = !isPaused;
 	}
 }
