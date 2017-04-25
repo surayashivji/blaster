@@ -24,5 +24,6 @@ public class GameManager : MonoBehaviour {
 	private void TogglePause()
 	{
 		isPaused = !isPaused;
+
 	}
 }

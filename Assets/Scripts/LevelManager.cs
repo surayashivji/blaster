@@ -8,7 +8,7 @@ public class LevelManager : MonoBehaviour {
 
 	#region LEVEL_OBJECT
 	[System.Serializable]
-	public class Level 
+	public class Level
 	{
 		public string levelText;
 		public int unlocked; 

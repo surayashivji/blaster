@@ -20,13 +20,12 @@ public class Sphere : MonoBehaviour {
 		Debug.Log ("Bullet Fire played");
 	}
 
-
 	void OnCollisionEnter(Collision collisionInfo) 
 	{
 		// game object the sphere collided with
 		GameObject collidedTarget = collisionInfo.collider.gameObject;
 		Debug.Log("Detected collision between " + gameObject.name + " and " + collisionInfo.collider.name);
-		Debug.Log (collidedTarget.tag);
+		Debug.Log ("\n Tag: " + collidedTarget.tag);
 		if (collidedTarget.tag == "target_tag") {
 			// Destroy target
 			GetComponent<AudioSource>().PlayOneShot(bulletHitSound);
@@ -34,15 +33,10 @@ public class Sphere : MonoBehaviour {
 
 			// Destroy particle system on the target if it exists
 			Debug.Log("DESTROY PARTICLE!");
-			collidedTarget.GetComponent<TargetLogic> ().AddScore ();
-
 			collidedTarget.GetComponent<TargetLogic> ().destroyParticle ();
-//
-//			Transform particleTransform = collisionInfo.collider.gameObject.transform.FindChild ("Fire Particle System");
-//			GameObject particleObject = particleTransform.gameObject;
-//			Destroy (particleObject);
+			collidedTarget.GetComponent<TargetLogic> ().AddToScore (30);
 
-			// destroy sphere
+			// Destroy sphere
 			Destroy (this.gameObject);
 		} 
 		else if (collidedTarget.tag == "Enemy") 
@@ -54,7 +48,7 @@ public class Sphere : MonoBehaviour {
 			// Destroy particle system on the target if it exists
 			collidedTarget.GetComponent<TargetLogic> ().destroyParticle ();
 
-			// destroy sphere
+			// Destroy sphere
 			Destroy (this.gameObject);
 		} 
 		else 

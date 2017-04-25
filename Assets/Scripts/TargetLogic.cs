@@ -5,15 +5,12 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class TargetLogic : MonoBehaviour {
-	public Text scoreText;
-
-	public int score;
 
 	// time it takes for target to go into fire mode
-	public float timeToFireMode = 1.0f;
+	 float timeToFireMode = 10.0f;
 
 	// time it takes for target to go from fire mode to destruction
-	public float timeToDeath = 20.0f;
+	 float timeToDeath = 10.0f;
 
 	// fire particle system
 	public GameObject fireParticlePrefab;
@@ -24,12 +21,16 @@ public class TargetLogic : MonoBehaviour {
 	// return true if target is burning
 	public static bool targetBurning;
 
+	private ScoreManager scoreManager;
+
+	private int numberOfTargetsLeft;
+
 	// Use this for initialization
 	void Start () {
-		scoreText = GameObject.Find("Score").GetComponent<Text> ();
-		score = 0;
-		UpdateScore ();
+		scoreManager = GameObject.Find("ScoreManager").GetComponent<ScoreManager>();
 		targetBurning = false;
+		numberOfTargetsLeft = GameObject.FindObjectOfType<SpawnScript> ().numOfInstances;
+		Debug.Log ("num left - " + numberOfTargetsLeft);
 		StartCoroutine(SetTargetOnFire(timeToFireMode, this.gameObject));
 	}
 
@@ -43,47 +44,64 @@ public class TargetLogic : MonoBehaviour {
 		Debug.Log ("Target is normal, wait for seconds before setting on fire");
 		yield return new WaitForSeconds(seconds);
 		Debug.Log ("set target on fire if it hasn't already been shot at");
-		if (obj != null)
+		if(true)
 		{
-			targetBurning = true;
-			currentFireParticle = Instantiate(fireParticlePrefab, obj.transform.position, Quaternion.identity);
-			StartCoroutine(KillTarget(timeToDeath, obj));
+			Debug.Log ("falseeeee");
+			// target has already been killed
+			numberOfTargetsLeft--;
+			Debug.Log("this target has already been killed no fire needed");
+			AddToScore (50); // add 50 extra points becayse the user destroyed it before fire
+			Debug.Log ("added score 50 - target destroyed");
+			reclaimPositon (obj);
+			yield break;
 		} 
 		else 
 		{
-			// object has already been killed
-			Debug.Log("this target has already been killed no fire needed");
-			reclaimPositon (obj);
-			yield break;
+			Debug.Log ("truuuu");
+			Debug.Log ("00");
+			Debug.Log ("set target on fire because it has not been killed");
+			// set target on fire because it has not been killed
+			targetBurning = true;
+			currentFireParticle = Instantiate(fireParticlePrefab, obj.transform.position, Quaternion.identity);
+			StartCoroutine(KillTarget(timeToDeath, obj));
 		}
 	}
 
 	/// <summary>
-	/// Sets the target on fire by attaching a fire particle system to the game object
-	/// @param seconds: number of seconds before setting the target on fire
-	/// @param obj: target object to set on fire
+	/// Kills Target if it hasn't been destroyed
+	/// @param seconds: number of seconds to wait before killing
+	/// @param obj: target game object to be killed
 	/// </summary>
 	private IEnumerator KillTarget(float seconds, GameObject obj) 
 	{
 		Debug.Log ("We know the target is on fire");
 		yield return new WaitForSeconds(seconds);
-		if (obj != null) 
+		Debug.Log (obj);
+		if (!(obj == null || obj.Equals(null)))
 		{
 			// target has not been shot with sphere
 			// destroy target object and particle
 			// GAME OVER
 			Debug.Log ("target hasn't been killed by sphere yet, so destroy");
+			Debug.Log ("\n here ");
 			reclaimPositon (obj);
 			Destroy (obj);
 			Destroy (currentFireParticle);
 			SceneManager.LoadScene("GameOver");
 		} 
-		else if (obj == null) 
+		else
 		{
-			// target has already been destroyed by user
-			SceneManager.LoadScene("WinLevel");
+			Debug.Log ("null - target has already been destroyed by user (After fire)");
+			// target has already been destroyed by user (After fire)
+			numberOfTargetsLeft--;
+			Debug.Log ("num left now - " + numberOfTargetsLeft);
+			if (numberOfTargetsLeft == 1) 
+			{
+				SceneManager.LoadScene("WinLevel");
+				// Achievement #1 Earned
+				AchievementManager.Instance.EarnAchievement("Amateur");
+			}
 			yield break;
-
 		}
 	} 
 
@@ -99,18 +117,19 @@ public class TargetLogic : MonoBehaviour {
 	public void destroyParticle() 
 	{
 		Destroy (this.currentFireParticle);
-
 	}
 
-	public void AddScore()
+	#region SCORE_MANAGER_ACCESSORS
+
+	public void AddToScore(int val)
 	{
-		score += 100;
-		UpdateScore ();
+		scoreManager.UpdateScore (val);
 	}
 
-	public void UpdateScore()
+	public void PrepareForNextLevel()
 	{
-		scoreText.text = "Score: " + score;
+		scoreManager.SaveGameState ();
 	}
 
+	#endregion // SCORE_MANAGER_ACCESSORS
 }

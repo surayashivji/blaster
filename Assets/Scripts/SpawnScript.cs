@@ -11,7 +11,6 @@ public class SpawnScript : MonoBehaviour {
 	public int numOfInstances;
 
 	public float timeToSpawn = 3;
-
 	public float distanceFromCamera = 60;
 
 	// padding between targets
@@ -24,10 +23,9 @@ public class SpawnScript : MonoBehaviour {
 
 	private float zPos = 0;
 
-
-	IEnumerator Start () 
+	private IEnumerator Start () 
 	{
-		// vuforia has no camera configuration callback so wait before using camera api
+		// Vuforia has no camera configuration callback so wait before using camera API
 		yield return new WaitForSeconds (2);
 		CalculateAvailablePositions ();
 		StartCoroutine (Spawn ());

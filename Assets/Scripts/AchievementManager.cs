@@ -34,7 +34,8 @@ public class AchievementManager : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		 PlayerPrefs.DeleteAll();
+		// PlayerPrefs.DeleteAll();
+
 		// instantiate all available achivements
 		InstantiateAchievement ("AchievementList", "Amateur", "Complete the tutorial to unlock!", 0);
 		InstantiateAchievement ("AchievementList", "Superstar", "Beat Level 1 to unlock!", 1);
@@ -42,13 +43,7 @@ public class AchievementManager : MonoBehaviour {
 		InstantiateAchievement ("AchievementList", "Max Nikkas", "It's a secret!", 3);
 	}
 
-	void Update() {
-		//EarnAchievement("Amateur");
-		if (Input.GetKeyDown (KeyCode.W)) {
-		EarnAchievement("Amateur");
-			}
-	}
-
+	// EarnAchievement("Amateur");
 	/// <summary>
 	/// Called when a user earns a specific achievement
 	/// @param title: title of the achivement earned
@@ -57,6 +52,7 @@ public class AchievementManager : MonoBehaviour {
 	{
 		if (achievements [title].canEarnAchievement()) 
 		{
+			achievements [title].Unlocked = true;
 			// achivement earned, instantiate the achivement on the screen and then remove
 //			GameObject a = (GameObject)Instantiate(displayedAchievement);
 //			SetAchievementInfo ("EarnCanvas", a, title);
