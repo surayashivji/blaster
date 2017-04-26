@@ -10,7 +10,7 @@ public class Timer : MonoBehaviour {
 
 	private Text timerText;
 
-	private float myTimer = 25.0f;
+	private float myTimer = 30.0f;
 
 	private ScoreManager scoreManager;
 
@@ -44,7 +44,7 @@ public class Timer : MonoBehaviour {
 
 	public void Reset()
 	{
-		myTimer = 25f;
+		myTimer = 30f;
 		timerText.text = myTimer.ToString("####");
 	}
 

@@ -110,6 +110,18 @@ public class LevelManager : MonoBehaviour {
 				}
 					break;
 				case 4: // level 4
+				if (persistedScore > 50) 
+				{
+					b.star1.SetActive(true);
+					if (persistedScore > 250) 
+					{
+						b.star2.SetActive(true);
+						if (persistedScore > 400) 
+						{
+							b.star3.SetActive(true);
+						}
+					}
+				}
 					break;
 				default:
 					break;
