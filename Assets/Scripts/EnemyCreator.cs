@@ -94,10 +94,10 @@ public class EnemyCreator : MonoBehaviour {
 			Debug.LogError ("Number of prefabs requested is greater than available positions");
 			yield return null;
 		} else {
-			while (GameManager.Instance.isPaused) 
-			{
-				yield return new WaitForSeconds(1);
-			}
+//			while (GameManager.Instance.isPaused) 
+//			{
+//				yield return new WaitForSeconds(1);
+//			}
 			while (targetDict.Count != numOfInstances) {
 				var target = Instantiate (duckPrefab) as GameObject;
 				SetPosition (target.transform);

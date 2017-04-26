@@ -52,7 +52,7 @@ public class Sphere : MonoBehaviour {
 			Destroy (collidedTarget);
 
 			// Destroy particle system on the target if it exists
-			collidedTarget.GetComponent<TargetLogic> ().destroyParticle ();
+//			collidedTarget.GetComponent<TargetLogic> ().destroyParticle ();
 
 			// destroy sphere
 			Destroy (this.gameObject);

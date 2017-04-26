@@ -55,7 +55,7 @@ public class DuckController : MonoBehaviour {
 	{
 		Vector3 currentPosition = transform.position;
 
-		Vector3 moveToward = new Vector3(Random.Range(-100f, 100f), Random.Range(-50f, 50f), 0) * moveSpeed;
+		Vector3 moveToward = new Vector3(Random.Range(-5f, 5f), Random.Range(-20f, 20f), 0) * moveSpeed;
 		moveDirection = moveToward - currentPosition;
 		moveDirection.z = 0;
 		moveDirection.Normalize ();
@@ -108,11 +108,6 @@ public class DuckController : MonoBehaviour {
 		
 	void OnBecameInvisible()
 	{ 
-		if (Camera.main == null)
-		{
-			Debug.Log("camera is null");
-			return;
-		}
 		Destroy (this.gameObject);
 	}
 

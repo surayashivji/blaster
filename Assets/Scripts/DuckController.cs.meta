@@ -1,10 +1,16 @@
 fileFormatVersion: 2
 guid: d7b6996f9c6c84b7985eafc46247a8a0
-timeCreated: 1489785260
+timeCreated: 1493216374
 licenseType: Free
 MonoImporter:
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - fireParticlePrefab: {fileID: 1024947534186192, guid: 132ee388776634fa49ca99161ea49d1d,
+      type: 2}
+  - wetDuckPrefab: {fileID: 1901606958683680, guid: 11530e3c8ac1b4eb7bbf4b04608a6b12,
+      type: 2}
+  - deadDuckPrefab: {fileID: 1683887170238454, guid: 696fb383accfa49c6809f4d1d4633ff5,
+      type: 2}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

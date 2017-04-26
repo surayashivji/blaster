@@ -37,7 +37,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.4465934, g: 0.49642956, b: 0.5748249, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -1467,7 +1467,6 @@ GameObject:
   - component: {fileID: 1491055491}
   - component: {fileID: 1491055490}
   - component: {fileID: 1491055489}
-  - component: {fileID: 1491055488}
   m_Layer: 5
   m_Name: UICamera
   m_TagString: Untagged
@@ -1475,13 +1474,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!81 &1491055488
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1491055487}
-  m_Enabled: 1
 --- !u!92 &1491055489
 Behaviour:
   m_ObjectHideFlags: 0
@@ -1593,7 +1585,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 100000, guid: bf30d577eead1ef40bcf2b404289daf4, type: 2}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: bf30d577eead1ef40bcf2b404289daf4, type: 2}
