@@ -788,7 +788,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &483656709
 RectTransform:
   m_ObjectHideFlags: 0
@@ -824,7 +824,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &491924044
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1374,47 +1374,6 @@ Material:
     - first:
         name: _Color
       second: {r: 0.82089555, g: 0.82089555, b: 0.82089555, a: 1}
---- !u!1 &1429252758
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 1429252760}
-  - component: {fileID: 1429252759}
-  m_Layer: 0
-  m_Name: WinOrLose
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1429252759
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1429252758}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 64c1edb3d0a66493eae5e56467f83f8a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  scoreManagerGO: {fileID: 529270316}
---- !u!4 &1429252760
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1429252758}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6.2772427, y: 24.492228, z: 95.20636}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 8
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1485023603
 GameObject:
   m_ObjectHideFlags: 0
@@ -2071,7 +2030,6 @@ GameObject:
   - component: {fileID: 2139220074}
   - component: {fileID: 2139220073}
   - component: {fileID: 2139220072}
-  - component: {fileID: 2139220071}
   - component: {fileID: 2139220075}
   m_Layer: 5
   m_Name: ExitButton
@@ -2098,17 +2056,6 @@ RectTransform:
   m_AnchoredPosition: {x: 369, y: 535}
   m_SizeDelta: {x: 148, y: 127}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &2139220071
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 2139220069}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a7a00a659b79d4a5e815276e4ff6b67e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &2139220072
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2205,4 +2152,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 843f506d8bcf34a19b516d1f28d6bcb1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pausePanel: {fileID: 0}
+  pausePanel: {fileID: 491924043}

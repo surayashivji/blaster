@@ -9,12 +9,8 @@ public class Timer : MonoBehaviour {
 	private Text timerText;
 
 	private float myTimer = 30.0f;
-//	public float MyTimer 
-//	{
-//		get { return myTimer; }
-//	}
 
-	private bool isGMPaused;
+//	private bool isGMPaused;
 
 	private ScoreManager scoreManager;
 
@@ -23,22 +19,22 @@ public class Timer : MonoBehaviour {
 	{
 		timerText = GetComponent<Text> ();
 		scoreManager = GameObject.Find("ScoreManager").GetComponent<ScoreManager>();
-		isGMPaused = GameManager.Instance.isPaused;
+//		isGMPaused = GameManager.Instance.isPaused;
 	}
 	
 	// Update is called once per frame
 	void Update () 
 	{
-		if (!isGMPaused) {
-			myTimer -= Time.deltaTime;
+		if (GameManager.Instance.isPaused) 
+		{
+			return;
 		}
+		myTimer -= Time.deltaTime;
 		timerText.text = myTimer.ToString();
 		if (myTimer < 1) {
 			Debug.Log (myTimer);
 			Debug.Log ("We out here");
-//			ScoreManager.Instance.SaveGameState (true);
 			PrepareForNextLevel(true);
-//			SceneManager.LoadScene("WinLevel");
 		}
 	}
 

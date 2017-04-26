@@ -58,7 +58,7 @@ public class ScoreManager : MonoBehaviour {
 	{
 		score += amt;
 	}
-
+	#endregion // PUBLIC_SCORE_METHODS
 	/// <summary>
 	/// Configures the next level so that it is unlocked and active
 	/// Persists the users level in order to allocate stars
@@ -67,9 +67,12 @@ public class ScoreManager : MonoBehaviour {
 	{
 		Debug.Log ("Saving game state!");
 		int nextLevel = currentLevel + 1;
-		if (nextLevel < currentLevel) {
+		Debug.Log ("next level is " + nextLevel);
+		if (nextLevel < numLevels) {
+			Debug.Log ("ok?");
 			// unlock next level, make it active
 			PlayerPrefs.SetInt ("Level" + nextLevel.ToString (), 1);
+			Debug.Log(PlayerPrefs.GetInt("Level" + nextLevel.ToString ()));
 		} 
 		PlayerPrefs.SetInt ("Level" + currentLevel.ToString () + "_score", score);
 		PlayerPrefs.Save ();
@@ -83,7 +86,34 @@ public class ScoreManager : MonoBehaviour {
 		} else {
 			SceneManager.LoadScene("GameOver");
 		}
+//		GameManager.Instance.ConfigureWinOrLose ();
 	}
 
-	#endregion // PUBLIC_SCORE_METHODS
+//	public void ConfigureWinOrLose()
+//	{
+//		Scene currentScene = SceneManager.GetActiveScene (); // WinLevel || GameOver
+//
+//		if (currentScene.name == "WinLevel") 
+//		{
+//			Debug.Log ("We are on win scene");
+//			Button nextLevelBtn = GameObject.Find ("NextLevelButton").GetComponent<Button> ();
+//			nextLevelBtn.onClick.AddListener (() => {
+//				NextLevel();
+//			});
+//			//			nextLevelBtn.onClick.AddListener (NextLevel);
+//		} 
+//		else if(currentScene.name == "GameOver")
+//		{
+//			Debug.Log ("We are on game over scene");
+//			Button restartBtn = GameObject.Find ("RestartButton").GetComponent<Button> ();
+//			//			restartBtn.onClick.AddListener (RestartLevel);
+//			restartBtn.onClick.AddListener (() => {
+//				RestartLevel();
+//			});
+//		}
+//	}
+
+
+
+
 }

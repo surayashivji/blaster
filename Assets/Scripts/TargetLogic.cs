@@ -90,7 +90,6 @@ public class TargetLogic : MonoBehaviour {
 			Destroy (obj);
 			Destroy (currentFireParticle);
 			PrepareForNextLevel (false);
-//			SceneManager.LoadScene("GameOver");
 		} 
 		else if (obj == null) 
 		{
