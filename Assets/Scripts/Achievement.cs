@@ -62,12 +62,11 @@ public class Achievement {
 	/// <summary>
 	/// @return true if the achivement isn't unlocked; otherwise, false
 	/// </summary>
-	public bool canEarnAchievement() 
+	public bool CanEarnAchievement() 
 	{
 		if (!unlocked) 
 		{
 			achivementReference.GetComponent<Image> ().sprite = AchievementManager.Instance.unlockedSprite;
-			achivementReference.transform.GetChild (3).GetComponent<Image>().sprite = AchievementManager.Instance.starSprite;
 			PersistAchievement (true);
 			return true;
 		}
@@ -95,8 +94,6 @@ public class Achievement {
 		{
 			// change menu sprite to orange
 			achivementReference.GetComponent<Image> ().sprite = AchievementManager.Instance.unlockedSprite;
-			// change toggle to star
-			achivementReference.transform.GetChild (3).GetComponent<Image>().sprite = AchievementManager.Instance.starSprite;
 		}
 	}
 }

@@ -123,8 +123,8 @@ MonoBehaviour:
   b: {x: 0, y: 0, z: 0}
   x1: 0
   x2: 0
-  timeToFireMode: 1
-  timeToDeath: 7
+  timeToFireMode: 2
+  timeToDeath: 5
   fireParticlePrefab: {fileID: 1024947534186192, guid: 132ee388776634fa49ca99161ea49d1d,
     type: 2}
   wetDuckPrefab: {fileID: 1901606958683680, guid: 11530e3c8ac1b4eb7bbf4b04608a6b12,

@@ -26,19 +26,35 @@ public class GameManager : MonoBehaviour {
 		SceneManager.LoadScene ("MenuScene");
 	}
 
+	public void ReturnToMenu() 
+	{
+		SceneManager.LoadScene ("MenuScene");
+		Timer.instance.Reset ();
+		isPaused = false;
+	}
+
 	public void RestartLevel() 
 	{
 		SceneManager.LoadScene ("Level" + curLevelNum);
+		Timer.instance.Reset ();
+		isPaused = false;
 	}
+
+
 
 	public void NextLevel() 
 	{
 		if (curLevelNum < 4) {
 			curLevelNum++;
 			SceneManager.LoadScene ("Level" + curLevelNum);
+			Timer.instance.Reset ();
+			isPaused = false;
 		} else 
 		{
 			// user beat all the levels!
+			SceneManager.LoadScene ("MenuScene");
+			Timer.instance.Reset ();
+			isPaused = false;
 		}
 	}
 

@@ -78,25 +78,35 @@ public class ScoreManager : MonoBehaviour {
 		}
 		// check if a score has already been saved
 		string key = "Level" + currentLevel.ToString () + "_score";
-		if (PlayerPrefs.HasKey (key)) 
-		{
+		if (PlayerPrefs.HasKey (key)) {
 			// user has already stored a score
 			// retrieve the score to see if it is greater than *score*
-			if (PlayerPrefs.GetInt (key) < score) 
-			{
+			if (PlayerPrefs.GetInt (key) < score) {
 				PlayerPrefs.SetInt (key, score);
 				PlayerPrefs.Save ();
 			}
+		} else {
+			// user hasn't stored score, store it
+			PlayerPrefs.SetInt (key, score);
+			PlayerPrefs.Save ();
 		}
+
 		if (win) {
-			if (currentLevel == 1) {
-				Debug.Log ("ACH SHOUD B HERE :/");
-				//AchievementManager.Instance.EarnAchievement ("Amateur");
-			} else if (currentLevel == 2) {
-				
-			} else if (currentLevel == 3) {
-				
-			} else if (currentLevel == 4) {
+			Debug.Log ("win");
+			if (currentLevel == 1) 
+			{
+				AchievementManager.Instance.EarnAchievement ("Amateur");
+			} 
+			else if (currentLevel == 2) 
+			{
+//				AchievementManager.Instance.EarnAchievement ("Superstar");
+			} 
+			else if (currentLevel == 3) 
+			{
+//				AchievementManager.Instance.EarnAchievement ("Trojan");
+			} 
+			else if (currentLevel == 4)
+			{
 				
 			}
 			SceneManager.LoadScene ("WinLevel");

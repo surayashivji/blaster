@@ -123,11 +123,9 @@ public class DuckController : MonoBehaviour {
 			Debug.Log ("duck hasn't been killed by sphere yet, so destroy");
 			loadDeadDuck ();
 			Destroy (obj);
-//			SceneManager.LoadScene("GameOver");
 			PrepareForNextLevel (false);
 
 		} else {
-//			SceneManager.LoadScene("WinLevel");
 			PrepareForNextLevel (true);
 			yield break;
 

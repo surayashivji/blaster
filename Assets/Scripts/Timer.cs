@@ -6,11 +6,18 @@ using UnityEngine.UI;
 
 public class Timer : MonoBehaviour {
 
+	public static Timer instance;
+
 	private Text timerText;
 
-	private float myTimer = 30.0f;
+	private float myTimer = 25.0f;
 
 	private ScoreManager scoreManager;
+
+	void Awake()
+	{
+		instance = this;
+	}
 
 	// Use this for initialization
 	void Start () 
@@ -31,7 +38,14 @@ public class Timer : MonoBehaviour {
 		if (myTimer < 1) {
 			Debug.Log (myTimer);
 			PrepareForNextLevel(true);
+			return;
 		}
+	}
+
+	public void Reset()
+	{
+		myTimer = 25f;
+		timerText.text = myTimer.ToString("####");
 	}
 
 

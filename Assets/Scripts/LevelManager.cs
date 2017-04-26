@@ -58,14 +58,20 @@ public class LevelManager : MonoBehaviour {
 			int currLevelIndex = int.Parse(b.levelNumberText.text);
 			int persistedScore = PlayerPrefs.GetInt ("Level" + b.levelNumberText.text + "_score");
 
+			Debug.Log ("surz \n");
+			Debug.Log ("Level" + b.levelNumberText.text + "_score");
+			Debug.Log("num : " + b.levelNumberText.text);
+			Debug.Log (PlayerPrefs.GetInt ("Level" + b.levelNumberText.text + "_score"));
 			switch (currLevelIndex) 
 			{
 				case 1: // level 1
-					if (persistedScore > 200) 
+					if (persistedScore > 1) 
 					{
+					Debug.Log ("hello");
 						b.star1.SetActive(true);
 						if (persistedScore > 500) 
 						{
+						Debug.Log ("no");
 							b.star2.SetActive(true);
 							if (persistedScore > 700) 
 							{
@@ -75,8 +81,9 @@ public class LevelManager : MonoBehaviour {
 					}
 					break;
 				case 2: // level 2
-					if (persistedScore > 300) 
+					if (persistedScore > 1) 
 					{
+					Debug.Log ("pls");
 						b.star1.SetActive(true);
 						if (persistedScore > 500) 
 						{
@@ -89,6 +96,18 @@ public class LevelManager : MonoBehaviour {
 					}
 					break;
 				case 3: // level 3
+				if (persistedScore > 1) 
+				{
+					b.star1.SetActive(true);
+					if (persistedScore > 500) 
+					{
+						b.star2.SetActive(true);
+						if (persistedScore > 650) 
+						{
+							b.star3.SetActive(true);
+						}
+					}
+				}
 					break;
 				case 4: // level 4
 					break;

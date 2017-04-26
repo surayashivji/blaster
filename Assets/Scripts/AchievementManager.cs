@@ -9,8 +9,6 @@ public class AchievementManager : MonoBehaviour {
 
 	public Sprite[] iconSprites;
 
-	public Sprite[] toggleSprites;
-
 	// collection of available achievements
 	public Dictionary<string, Achievement> achievements = new Dictionary<string, Achievement>();
 
@@ -18,28 +16,25 @@ public class AchievementManager : MonoBehaviour {
 	public Sprite starSprite;
 
 	private static AchievementManager instance;
-	public static AchievementManager Instance { set; get; }
+//	public static AchievementManager Instance { set; get; }
+	public static AchievementManager Instance {
+		get { 
+			if (instance == null) {
+				instance = GameObject.FindObjectOfType<AchievementManager>();
+			}
+			return AchievementManager.instance; 
+		}
+	}
 
-//	public static AchievementManager Instance
-//	{
-//		get 
-//		{
-//			if(instance == null) 
-//			{
-//				instance = GameObject.FindObjectOfType<AchievementManager> ();
-//			}
-//			return AchievementManager.instance; 
-//		}
-//	}
 
 	// Use this for initialization
 	void Start () {
 		// PlayerPrefs.DeleteAll();
 
 		// instantiate all available achivements
-		InstantiateAchievement ("AchievementList", "Amateur", "Complete the tutorial to unlock!", 0);
-		InstantiateAchievement ("AchievementList", "Superstar", "Beat Level 1 to unlock!", 1);
-		InstantiateAchievement ("AchievementList", "Trojan", "Beat Level 2 to unlock!", 2);
+		InstantiateAchievement ("AchievementList", "Amateur", "Complete Level 1!", 0);
+		InstantiateAchievement ("AchievementList", "Superstar", "Beat Level 2 to unlock!", 1);
+		InstantiateAchievement ("AchievementList", "Trojan", "Beat Level 3 to unlock!", 2);
 		InstantiateAchievement ("AchievementList", "Max Nikkas", "It's a secret!", 3);
 	}
 
@@ -50,9 +45,11 @@ public class AchievementManager : MonoBehaviour {
 	/// </summary>
 	public void EarnAchievement(string title) 
 	{
-		if (achievements [title].canEarnAchievement()) 
+		if (achievements [title].CanEarnAchievement()) 
 		{
-			achievements [title].Unlocked = true;
+			// we earned new achievement
+			Debug.Log("Achievement Earned!");
+
 		}
 	}
 
@@ -78,6 +75,5 @@ public class AchievementManager : MonoBehaviour {
 		a.transform.GetChild (0).GetComponent<Text> ().text = title;
 		a.transform.GetChild (1).GetComponent<Text> ().text = achievements[title].Description;
 		a.transform.GetChild (2).GetComponent<Image> ().sprite = iconSprites [achievements[title].SpriteIndex];
-		a.transform.GetChild (3).GetComponent<Image>().sprite = toggleSprites [0];
 	}
 }
