@@ -11,6 +11,7 @@ TagManager:
   - bg_music
   - deadDuck
   - LevelButton
+  - pauseGO
   layers:
   - Default
   - TransparentFX

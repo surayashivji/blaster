@@ -7,7 +7,12 @@ using UnityEngine.UI;
 public class Timer : MonoBehaviour {
 
 	private Text timerText;
-	public float myTimer = 30;
+
+	private float myTimer = 30.0f;
+	public float MyTimer {
+		get { return myTimer; }
+	}
+
 	private bool isGMPaused;
 
 	// Use this for initialization
@@ -24,5 +29,10 @@ public class Timer : MonoBehaviour {
 			myTimer -= Time.deltaTime;
 		}
 		timerText.text = myTimer.ToString ("f0");
+		if (myTimer < 1) {
+			Debug.Log ("We out here");
+			ScoreManager.Instance.SaveGameState ();
+			SceneManager.LoadScene("WinLevel");
+		}
 	}
 }

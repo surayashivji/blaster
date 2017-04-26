@@ -20,14 +20,13 @@ public class TargetLogic : MonoBehaviour {
 	// return true if target is burning
 	public static bool targetBurning;
 
-
 	private ScoreManager scoreManager;
-	private Timer timer;
+//	private Timer timer;
 
 	// Use this for initialization
 	void Start () {
 		targetBurning = false;
-		timer = GameObject.Find ("Timer").GetComponent<Timer> ();
+//		timer = GameObject.Find ("Timer").GetComponent<Timer> ();
 		scoreManager = GameObject.Find("ScoreManager").GetComponent<ScoreManager>();
 		StartCoroutine(SetTargetOnFire(timeToFireMode, this.gameObject));
 	}
@@ -35,15 +34,15 @@ public class TargetLogic : MonoBehaviour {
 
 	void Update() 
 	{
-		Debug.Log ("okk");
-		Debug.Log ("\n");
-		Debug.Log (timer.myTimer);
-		if (timer.myTimer < 1) 
-		{
-			Debug.Log ("HELLO");
+//		Debug.Log ("okk");
+//		Debug.Log ("\n");
+//		Debug.Log (timer.MyTimer);
+//		if (timer.MyTimer < 1) 
+//		{
+//			Debug.Log ("HELLO");
 //			PrepareForNextLevel ();
-			SceneManager.LoadScene("WinLevel");
-		}
+////			SceneManager.LoadScene("WinLevel");
+//		}
 	}
 
 	/// <summary>
@@ -96,6 +95,7 @@ public class TargetLogic : MonoBehaviour {
 		else if (obj == null) 
 		{
 			// target has already been destroyed by user
+			reclaimPositon(obj);
 			yield break;
 
 		}

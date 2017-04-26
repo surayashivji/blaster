@@ -6,8 +6,16 @@ using UnityEngine.UI;
 
 public class ScoreManager : MonoBehaviour {
 
+	public static ScoreManager Instance { set; get; }
+
 	private int score;
+
 	private int currentLevel;
+	public int CurrentLevel
+	{
+		get { return currentLevel; }
+	}
+
 	private int numLevels = 4;
 
 	public Text scoreText;

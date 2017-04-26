@@ -55,33 +55,32 @@ public class LevelManager : MonoBehaviour {
 
 			// set number of earned stars according to score
 			int currLevelIndex = int.Parse(b.levelNumberText.text);
-			Debug.Log ("CURR LEVEL INDEX " + currLevelIndex);
 			int persistedScore = PlayerPrefs.GetInt ("Level" + b.levelNumberText.text + "_score");
 
 			switch (currLevelIndex) 
 			{
-			case 1: // level 1
-				if (persistedScore > 50) 
-				{
-					b.star1.SetActive(true);
-					if (persistedScore > 100) 
+				case 1: // level 1
+					if (persistedScore > 50) 
 					{
-						b.star2.SetActive(true);
-						if (persistedScore > 250) 
+						b.star1.SetActive(true);
+						if (persistedScore > 100) 
 						{
-							b.star3.SetActive(true);
+							b.star2.SetActive(true);
+							if (persistedScore > 250) 
+							{
+								b.star3.SetActive(true);
+							}
 						}
 					}
-				}
-				break;
-			case 2: // level 2
-				break;
-			case 3: // level 3
-				break;
-			case 4: // level 4
-				break;
-			default:
-				break;
+					break;
+				case 2: // level 2
+					break;
+				case 3: // level 3
+					break;
+				case 4: // level 4
+					break;
+				default:
+					break;
 			}
 
 
