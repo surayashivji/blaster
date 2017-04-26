@@ -14,7 +14,9 @@ public class GameManager : MonoBehaviour {
 
 	private ScoreManager scoreManager;
 
-	private void Awake() 
+	public int curLevelNum = 0;
+
+	private void Awake()
 	{
 		Instance = this;
 		DontDestroyOnLoad (this.gameObject);
@@ -26,17 +28,14 @@ public class GameManager : MonoBehaviour {
 
 	public void RestartLevel() 
 	{
-		Debug.Log ("CHECK HERE PLS BE 1 ------ \n");
-		Debug.Log (ScoreManager.Instance.CurrentLevel);
-		SceneManager.LoadScene ("Level" + ScoreManager.Instance.CurrentLevel);
+		SceneManager.LoadScene ("Level" + curLevelNum);
 	}
 
 	public void NextLevel() 
 	{
-//		Debug.Log ("CHECK HERE PLS BE 2?? load if after pls ------ \n");
-//		Debug.Log (scoreManager.CurrentLevel+ 1);
-		if (ScoreManager.Instance.CurrentLevel < 4) {
-			SceneManager.LoadScene ("Level" + ScoreManager.Instance.CurrentLevel + 1);
+		if (curLevelNum < 4) {
+			curLevelNum++;
+			SceneManager.LoadScene ("Level" + curLevelNum);
 		} else 
 		{
 			// user beat all the levels!

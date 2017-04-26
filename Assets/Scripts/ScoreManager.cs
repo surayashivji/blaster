@@ -10,7 +10,7 @@ public class ScoreManager : MonoBehaviour {
 
 	private int score;
 
-	private int currentLevel = 0;
+	private int currentLevel;
 	public int CurrentLevel
 	{
 		get { return currentLevel; }
@@ -58,10 +58,13 @@ public class ScoreManager : MonoBehaviour {
 	{
 		score += amt;
 	}
+
 	#endregion // PUBLIC_SCORE_METHODS
+
 	/// <summary>
 	/// Configures the next level so that it is unlocked and active
 	/// Persists the users level in order to allocate stars
+	/// @param win: true if the user has won the current level; otherwise, false
 	/// </summary>
 	public void SaveGameState(bool win)
 	{
@@ -72,12 +75,22 @@ public class ScoreManager : MonoBehaviour {
 			// unlock next level, make it active
 			PlayerPrefs.SetInt ("Level" + nextLevel.ToString (), 1);
 			Debug.Log(PlayerPrefs.GetInt("Level" + nextLevel.ToString ()));
-		} 
-		PlayerPrefs.SetInt ("Level" + currentLevel.ToString () + "_score", score);
-		PlayerPrefs.Save ();
+		}
+		// check if a score has already been saved
+		string key = "Level" + currentLevel.ToString () + "_score";
+		if (PlayerPrefs.HasKey (key)) 
+		{
+			// user has already stored a score
+			// retrieve the score to see if it is greater than *score*
+			if (PlayerPrefs.GetInt (key) < score) 
+			{
+				PlayerPrefs.SetInt (key, score);
+				PlayerPrefs.Save ();
+			}
+		}
 		if (win) {
 			if (currentLevel == 1) {
-				Debug.Log ("ACH SHOUD B HERE");
+				Debug.Log ("ACH SHOUD B HERE :/");
 				//AchievementManager.Instance.EarnAchievement ("Amateur");
 			} else if (currentLevel == 2) {
 				

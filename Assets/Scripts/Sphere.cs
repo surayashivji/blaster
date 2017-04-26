@@ -15,12 +15,11 @@ public class Sphere : MonoBehaviour {
 
 	void OnCollisionStay(Collision col)
 	{
-		GetComponent<AudioSource>().volume = 2;
+		GetComponent<AudioSource>().volume = 1;
 		GetComponent<AudioSource> ().PlayOneShot (bulletFireSound);
 		Debug.Log ("Bullet Fire played");
 	}
-
-
+		
 	void OnCollisionEnter(Collision collisionInfo) 
 	{
 		// game object the sphere collided with
@@ -48,7 +47,6 @@ public class Sphere : MonoBehaviour {
 		} 
 		else if (collidedTarget.tag == "Enemy") 
 		{
-
 			// Destroy target
 			GetComponent<AudioSource>().PlayOneShot(bulletHitSound);
 			Destroy (collidedTarget);

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 using UnityEngine.EventSystems;
 
 public class LevelManager : MonoBehaviour {
@@ -51,7 +52,7 @@ public class LevelManager : MonoBehaviour {
 			// set level manager button for unity editor
 			b.buttonUnlocked = level.unlocked;
 			b.GetComponent<Button>().interactable = level.isInteractable;
-			b.GetComponent<Button> ().onClick.AddListener (() => LoadLevel ("Level" + b.levelNumberText.text)); 
+			b.GetComponent<Button> ().onClick.AddListener (() => LoadLevel (b.levelNumberText.text)); 
 
 			// set number of earned stars according to score
 			int currLevelIndex = int.Parse(b.levelNumberText.text);
@@ -60,13 +61,13 @@ public class LevelManager : MonoBehaviour {
 			switch (currLevelIndex) 
 			{
 				case 1: // level 1
-					if (persistedScore > 50) 
+					if (persistedScore > 200) 
 					{
 						b.star1.SetActive(true);
-						if (persistedScore > 100) 
+						if (persistedScore > 500) 
 						{
 							b.star2.SetActive(true);
-							if (persistedScore > 250) 
+							if (persistedScore > 700) 
 							{
 								b.star3.SetActive(true);
 							}
@@ -95,7 +96,6 @@ public class LevelManager : MonoBehaviour {
 					break;
 			}
 
-
 			// make level button prefab a child of the layout spacer
 			levelButton.transform.SetParent (spacer);
 		}
@@ -121,6 +121,8 @@ public class LevelManager : MonoBehaviour {
 	/// </summary>
 	void LoadLevel(string val)
 	{
-		Application.LoadLevel (val);
+		GameManager.Instance.curLevelNum = int.Parse (val);
+//		Application.LoadLevel (val);
+		SceneManager.LoadScene ("Level" + val);
 	}
 }

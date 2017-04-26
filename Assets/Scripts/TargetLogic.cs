@@ -9,7 +9,7 @@ public class TargetLogic : MonoBehaviour {
 	public static float timeToFireMode = 6.0f;
 
 	// time it takes for target to go from fire mode to destruction
-	public float timeToDeath = 20.0f;
+	public float timeToDeath = 10.0f;
 
 	// fire particle system
 	public GameObject fireParticlePrefab;
