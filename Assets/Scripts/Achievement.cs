@@ -11,6 +11,7 @@ public class Achievement {
 	private string description;
 	private bool unlocked;
 	private int spriteIndex;
+
 	// reference to achievement in game world
 	private GameObject achivementReference;
 
@@ -43,6 +44,10 @@ public class Achievement {
 	/// <summary>
 	/// Constructs an achivement object with a name (title), description, icon sprite index,
 	/// and reference to achivement game object it will attach to
+	/// @param name: title of the achievement that will be the key in PlayerPrefs
+	/// @param description: describes for the user how they can earn the achivement
+	/// @param index: index of sprite being used to represent the achivement
+	/// @param reference: GameObject in hierarchy we will instantiate
 	/// </summary>
 	public Achievement(string name, string description, int index, GameObject reference) 
 	{

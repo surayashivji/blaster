@@ -52,11 +52,14 @@ public class TargetLogic : MonoBehaviour {
 	/// </summary>
 	private IEnumerator SetTargetOnFire(float seconds, GameObject obj) 
 	{
-		Debug.Log ("Target is normal, wait for seconds before setting on fire");
 		yield return new WaitForSeconds(seconds);
 		Debug.Log ("set target on fire if it hasn't already been shot at");
 		if (obj != null)
 		{
+			while (GameManager.Instance.isPaused) 
+			{
+				yield return new WaitForSeconds(1);
+			}
 			targetBurning = true;
 			currentFireParticle = Instantiate(fireParticlePrefab, obj.transform.position, Quaternion.identity);
 			StartCoroutine(KillTarget(timeToDeath, obj));
@@ -65,7 +68,6 @@ public class TargetLogic : MonoBehaviour {
 		{
 			// object has already been killed
 			Debug.Log("this target has already been killed no fire needed");
-		
 			reclaimPositon (obj);
 			yield break;
 		}
@@ -85,6 +87,10 @@ public class TargetLogic : MonoBehaviour {
 			// target has not been shot with sphere
 			// destroy target object and particle
 			// GAME OVER
+			while (GameManager.Instance.isPaused) 
+			{
+				yield return new WaitForSeconds(1);
+			}
 			Debug.Log ("target hasn't been killed by sphere yet, so destroy");
 			reclaimPositon (obj);
 			Destroy (obj);

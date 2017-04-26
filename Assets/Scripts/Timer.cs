@@ -10,8 +10,6 @@ public class Timer : MonoBehaviour {
 
 	private float myTimer = 30.0f;
 
-//	private bool isGMPaused;
-
 	private ScoreManager scoreManager;
 
 	// Use this for initialization
@@ -19,7 +17,6 @@ public class Timer : MonoBehaviour {
 	{
 		timerText = GetComponent<Text> ();
 		scoreManager = GameObject.Find("ScoreManager").GetComponent<ScoreManager>();
-//		isGMPaused = GameManager.Instance.isPaused;
 	}
 	
 	// Update is called once per frame
@@ -30,7 +27,8 @@ public class Timer : MonoBehaviour {
 			return;
 		}
 		myTimer -= Time.deltaTime;
-		timerText.text = myTimer.ToString();
+		timerText.text = myTimer.ToString("####");
+//		timerText.text = string.Format("{0:0.#}", myTimer);
 		if (myTimer < 1) {
 			Debug.Log (myTimer);
 			Debug.Log ("We out here");

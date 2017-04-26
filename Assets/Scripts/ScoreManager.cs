@@ -77,42 +77,21 @@ public class ScoreManager : MonoBehaviour {
 		PlayerPrefs.SetInt ("Level" + currentLevel.ToString () + "_score", score);
 		PlayerPrefs.Save ();
 		if (win) {
-			if (currentLevel == 1) 
-			{
+			if (currentLevel == 1) {
 				Debug.Log ("ACH SHOUD B HERE");
 //				AchievementManager.Instance.EarnAchievement ("Amateur");
+			} else if (currentLevel == 2) {
+				
+			} else if (currentLevel == 3) {
+				
+			} else if (currentLevel == 4) {
+				
 			}
 			SceneManager.LoadScene ("WinLevel");
 		} else {
 			SceneManager.LoadScene("GameOver");
 		}
-//		GameManager.Instance.ConfigureWinOrLose ();
 	}
-
-//	public void ConfigureWinOrLose()
-//	{
-//		Scene currentScene = SceneManager.GetActiveScene (); // WinLevel || GameOver
-//
-//		if (currentScene.name == "WinLevel") 
-//		{
-//			Debug.Log ("We are on win scene");
-//			Button nextLevelBtn = GameObject.Find ("NextLevelButton").GetComponent<Button> ();
-//			nextLevelBtn.onClick.AddListener (() => {
-//				NextLevel();
-//			});
-//			//			nextLevelBtn.onClick.AddListener (NextLevel);
-//		} 
-//		else if(currentScene.name == "GameOver")
-//		{
-//			Debug.Log ("We are on game over scene");
-//			Button restartBtn = GameObject.Find ("RestartButton").GetComponent<Button> ();
-//			//			restartBtn.onClick.AddListener (RestartLevel);
-//			restartBtn.onClick.AddListener (() => {
-//				RestartLevel();
-//			});
-//		}
-//	}
-
 
 
 

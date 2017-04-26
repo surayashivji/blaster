@@ -10,7 +10,6 @@ public class GameManager : MonoBehaviour {
 
 	public bool isPaused;
 
-	private Timer timer;
 	private GameObject pausePanGO;
 
 	private ScoreManager scoreManager;
@@ -25,45 +24,23 @@ public class GameManager : MonoBehaviour {
 		SceneManager.LoadScene ("MenuScene");
 	}
 
-	public void TogglePause()
-	{
-		pausePanGO = GameObject.FindGameObjectWithTag ("pauseGO");
-		Debug.Log ("toggle pause called");
-		timer = GameObject.Find ("Timer").GetComponent<Timer> ();
-		isPaused = !isPaused;
-		// pause timer
-		if (isPaused) 
-		{
-			Debug.Log ("We are now paused");
-			// we are now paused
-			// pause timer, set panel to active
-			pausePanGO.SetActive(true);
-
-		}
-		else 
-		{
-			Debug.Log ("unpause the game please");
-			// unpause game, unpause timer
-			// set panel to inactive
-			pausePanGO.SetActive(false);
-		}
-	}
-
-
 	public void RestartLevel() 
 	{
 		Debug.Log ("CHECK HERE PLS BE 1 ------ \n");
-		Debug.Log (scoreManager.CurrentLevel);
+		Debug.Log (ScoreManager.Instance.CurrentLevel);
+		SceneManager.LoadScene ("Level" + ScoreManager.Instance.CurrentLevel);
 	}
 
 	public void NextLevel() 
 	{
-
-		Debug.Log ("CHECK HERE PLS BE 1 ------ \n");
-		Debug.Log (scoreManager.CurrentLevel);
-
-		Debug.Log ("CHECK HERE PLS BE 2?? load if after pls ------ \n");
-		Debug.Log (scoreManager.CurrentLevel+ 1);
+//		Debug.Log ("CHECK HERE PLS BE 2?? load if after pls ------ \n");
+//		Debug.Log (scoreManager.CurrentLevel+ 1);
+		if (ScoreManager.Instance.CurrentLevel < 4) {
+			SceneManager.LoadScene ("Level" + ScoreManager.Instance.CurrentLevel + 1);
+		} else 
+		{
+			// user beat all the levels!
+		}
 	}
 
 

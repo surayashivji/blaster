@@ -10,7 +10,7 @@ public class SpawnScript : MonoBehaviour {
 	// number of targets
 	public int numOfInstances;
 
-	public float timeToSpawn = 3;
+	public float timeToSpawn = 2;
 	public float distanceFromCamera = 60;
 
 	// padding between targets
@@ -105,6 +105,10 @@ public class SpawnScript : MonoBehaviour {
 		{
 			while (targetDict.Count != numOfInstances) 
 			{
+				while (GameManager.Instance.isPaused) 
+				{
+					yield return new WaitForSeconds(1);
+				}
 				var target = Instantiate (targetPrefab) as GameObject;
 				SetPosition (target.transform);
 

@@ -8,6 +8,7 @@ public class AchievementManager : MonoBehaviour {
 	public GameObject achievementPrefab;
 
 	public Sprite[] iconSprites;
+
 	public Sprite[] toggleSprites;
 
 	public GameObject displayedAchievement;
