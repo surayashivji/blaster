@@ -36,11 +36,6 @@ public class GunController : MonoBehaviour {
 
 		bounds.center = transform.position;
 
-		//Keep the spheres constrained to the screen bounds
-//		Vector3 off = Util.ScreenBoundsCheck(bounds,BoundsTest.onScreen);
-//		if (off != Vector3.zero) {
-//			Destroy (spherePrefab.gameObject);
-//		}
 	}
 
 	public void spawnSphere() 
@@ -50,12 +45,5 @@ public class GunController : MonoBehaviour {
 		GameObject go = Instantiate (spherePrefab, spawnObject.position, spawnObject.rotation) as GameObject;
 		go.GetComponent<Rigidbody> ().AddForce (transform.forward * 30, ForceMode.VelocityChange);
 
-//		Destroy (go, 5.0f);
-
-//		bounds = Util.CombineBoundsOfChildren (go);
-//		Vector3 off = Util.ScreenBoundsCheck(bounds,BoundsTest.onScreen);
-//		if (off != Vector3.zero) {
-//			Destroy (go);
-//		}
 	}
 }

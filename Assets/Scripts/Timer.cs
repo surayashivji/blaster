@@ -28,10 +28,8 @@ public class Timer : MonoBehaviour {
 		}
 		myTimer -= Time.deltaTime;
 		timerText.text = myTimer.ToString("####");
-//		timerText.text = string.Format("{0:0.#}", myTimer);
 		if (myTimer < 1) {
 			Debug.Log (myTimer);
-			Debug.Log ("We out here");
 			PrepareForNextLevel(true);
 		}
 	}

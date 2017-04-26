@@ -11,8 +11,6 @@ public class AchievementManager : MonoBehaviour {
 
 	public Sprite[] toggleSprites;
 
-	public GameObject displayedAchievement;
-
 	// collection of available achievements
 	public Dictionary<string, Achievement> achievements = new Dictionary<string, Achievement>();
 
@@ -20,18 +18,19 @@ public class AchievementManager : MonoBehaviour {
 	public Sprite starSprite;
 
 	private static AchievementManager instance;
+	public static AchievementManager Instance { set; get; }
 
-	public static AchievementManager Instance
-	{
-		get 
-		{
-			if(instance == null) 
-			{
-				instance = GameObject.FindObjectOfType<AchievementManager> ();
-			}
-			return AchievementManager.instance; 
-		}
-	}
+//	public static AchievementManager Instance
+//	{
+//		get 
+//		{
+//			if(instance == null) 
+//			{
+//				instance = GameObject.FindObjectOfType<AchievementManager> ();
+//			}
+//			return AchievementManager.instance; 
+//		}
+//	}
 
 	// Use this for initialization
 	void Start () {
@@ -54,9 +53,6 @@ public class AchievementManager : MonoBehaviour {
 		if (achievements [title].canEarnAchievement()) 
 		{
 			achievements [title].Unlocked = true;
-			// achivement earned, instantiate the achivement on the screen and then remove
-//			GameObject a = (GameObject)Instantiate(displayedAchievement);
-//			SetAchievementInfo ("EarnCanvas", a, title);
 		}
 	}
 

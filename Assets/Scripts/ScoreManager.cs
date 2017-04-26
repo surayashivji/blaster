@@ -10,7 +10,7 @@ public class ScoreManager : MonoBehaviour {
 
 	private int score;
 
-	private int currentLevel;
+	private int currentLevel = 0;
 	public int CurrentLevel
 	{
 		get { return currentLevel; }
@@ -69,7 +69,6 @@ public class ScoreManager : MonoBehaviour {
 		int nextLevel = currentLevel + 1;
 		Debug.Log ("next level is " + nextLevel);
 		if (nextLevel < numLevels) {
-			Debug.Log ("ok?");
 			// unlock next level, make it active
 			PlayerPrefs.SetInt ("Level" + nextLevel.ToString (), 1);
 			Debug.Log(PlayerPrefs.GetInt("Level" + nextLevel.ToString ()));
@@ -79,7 +78,7 @@ public class ScoreManager : MonoBehaviour {
 		if (win) {
 			if (currentLevel == 1) {
 				Debug.Log ("ACH SHOUD B HERE");
-//				AchievementManager.Instance.EarnAchievement ("Amateur");
+				//AchievementManager.Instance.EarnAchievement ("Amateur");
 			} else if (currentLevel == 2) {
 				
 			} else if (currentLevel == 3) {
@@ -92,7 +91,4 @@ public class ScoreManager : MonoBehaviour {
 			SceneManager.LoadScene("GameOver");
 		}
 	}
-
-
-
 }

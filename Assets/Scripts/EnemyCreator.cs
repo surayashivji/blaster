@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using Vuforia;
 
-
 public class EnemyCreator : MonoBehaviour {
 
 	public float minSpawnTime = 0.75f; 
@@ -95,6 +94,10 @@ public class EnemyCreator : MonoBehaviour {
 			Debug.LogError ("Number of prefabs requested is greater than available positions");
 			yield return null;
 		} else {
+			while (GameManager.Instance.isPaused) 
+			{
+				yield return new WaitForSeconds(1);
+			}
 			while (targetDict.Count != numOfInstances) {
 				var target = Instantiate (duckPrefab) as GameObject;
 				SetPosition (target.transform);
@@ -119,31 +122,4 @@ public class EnemyCreator : MonoBehaviour {
 	{
 		availablePositions.Add (position);
 	}
-
-//	private void OnDrawGizmosSelected() {
-//		Camera camera = Camera.main;
-//		Vector3 bottomLeft = camera.ViewportToWorldPoint(new Vector3(0,0.3f,distanceFromCamera));
-//		Vector3 topRight = camera.ViewportToWorldPoint (new Vector3 (1, 1, distanceFromCamera));
-//		Gizmos.color = Color.yellow;
-//		Debug.Log ("" + bottomLeft + " " + topRight);
-//		Gizmos.DrawSphere(bottomLeft, 1);
-//		Gizmos.DrawSphere(topRight, 1);
-//	}
-
-
-//	//2    
-//	void Start () {
-//		Invoke("SpawnEnemy",minSpawnTime);
-//	}
-//
-//	//3
-//	void SpawnEnemy()
-//	{
-//		Debug.Log("Spawn an enemy");
-//		for(int i =0;i< 3;i++){
-//		Vector3 EnemyPosition = new Vector3 (Random.Range (-5f, 5f), Random.Range (-16f, 16f), 0);
-//
-//		Instantiate (duckPrefab, EnemyPosition, Quaternion.identity);
-//		}
-//	}
 }

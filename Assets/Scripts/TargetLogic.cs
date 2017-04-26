@@ -21,29 +21,14 @@ public class TargetLogic : MonoBehaviour {
 	public static bool targetBurning;
 
 	private ScoreManager scoreManager;
-//	private Timer timer;
 
 	// Use this for initialization
 	void Start () {
 		targetBurning = false;
-//		timer = GameObject.Find ("Timer").GetComponent<Timer> ();
 		scoreManager = GameObject.Find("ScoreManager").GetComponent<ScoreManager>();
 		StartCoroutine(SetTargetOnFire(timeToFireMode, this.gameObject));
 	}
-
-
-	void Update() 
-	{
-//		Debug.Log ("okk");
-//		Debug.Log ("\n");
-//		Debug.Log (timer.MyTimer);
-//		if (timer.MyTimer < 1) 
-//		{
-//			Debug.Log ("HELLO");
-//			PrepareForNextLevel ();
-////			SceneManager.LoadScene("WinLevel");
-//		}
-	}
+		
 
 	/// <summary>
 	/// Sets the target on fire by attaching a fire particle system to the game object
