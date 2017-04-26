@@ -18,7 +18,6 @@ public class PauseManager : MonoBehaviour {
 
 	public void togglePauseButton()
 	{
-		Debug.Log ("pause manager toggle");
 		GameManager.Instance.TogglePause ();
 	}
 }

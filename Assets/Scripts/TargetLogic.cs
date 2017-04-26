@@ -89,8 +89,8 @@ public class TargetLogic : MonoBehaviour {
 			reclaimPositon (obj);
 			Destroy (obj);
 			Destroy (currentFireParticle);
-			PrepareForNextLevel ();
-			SceneManager.LoadScene("GameOver");
+			PrepareForNextLevel (false);
+//			SceneManager.LoadScene("GameOver");
 		} 
 		else if (obj == null) 
 		{
@@ -123,9 +123,9 @@ public class TargetLogic : MonoBehaviour {
 		scoreManager.UpdateScore (val);
 	}
 
-	public void PrepareForNextLevel()
+	public void PrepareForNextLevel(bool didWin)
 	{
-		scoreManager.SaveGameState ();
+		scoreManager.SaveGameState (didWin);
 	}
 
 	#endregion // SCORE_MANAGER_ACCESSORS

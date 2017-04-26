@@ -63,7 +63,7 @@ public class ScoreManager : MonoBehaviour {
 	/// Configures the next level so that it is unlocked and active
 	/// Persists the users level in order to allocate stars
 	/// </summary>
-	public void SaveGameState()
+	public void SaveGameState(bool win)
 	{
 		Debug.Log ("Saving game state!");
 		int nextLevel = currentLevel + 1;
@@ -73,6 +73,16 @@ public class ScoreManager : MonoBehaviour {
 		} 
 		PlayerPrefs.SetInt ("Level" + currentLevel.ToString () + "_score", score);
 		PlayerPrefs.Save ();
+		if (win) {
+			if (currentLevel == 1) 
+			{
+				Debug.Log ("ACH SHOUD B HERE");
+//				AchievementManager.Instance.EarnAchievement ("Amateur");
+			}
+			SceneManager.LoadScene ("WinLevel");
+		} else {
+			SceneManager.LoadScene("GameOver");
+		}
 	}
 
 	#endregion // PUBLIC_SCORE_METHODS

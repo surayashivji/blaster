@@ -12,6 +12,7 @@ TagManager:
   - deadDuck
   - LevelButton
   - pauseGO
+  - nxtLvlBtn
   layers:
   - Default
   - TransparentFX

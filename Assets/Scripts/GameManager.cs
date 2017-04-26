@@ -10,7 +10,7 @@ public class GameManager : MonoBehaviour {
 
 	public bool isPaused;
 
-	private Timer timer;
+//	private Timer timer;
 	private GameObject pausePanGO;
 
 	private void Awake() 
@@ -24,25 +24,26 @@ public class GameManager : MonoBehaviour {
 
 	public void TogglePause()
 	{
-		pausePanGO = GameObject.FindGameObjectWithTag ("pauseGO");
-		Debug.Log ("toggle pause called");
-		timer = GameObject.Find ("Timer").GetComponent<Timer> ();
-		isPaused = !isPaused;
-		// pause timer
-		if (isPaused) 
-		{
-			Debug.Log ("We are now paused");
-			// we are now paused
-			// pause timer, set panel to active
-			pausePanGO.SetActive(true);
+//		pausePanGO = GameObject.FindGameObjectWithTag ("pauseGO");
+//		Debug.Log ("toggle pause called");
+////		timer = GameObject.Find ("Timer").GetComponent<Timer> ();
+//		isPaused = !isPaused;
+//		// pause timer
+//		if (isPaused) 
+//		{
+//			Debug.Log ("We are now paused");
+//			// we are now paused
+//			// pause timer, set panel to active
+//			pausePanGO.SetActive(true);
+//
+//		}
+//		else 
+//		{
+//			Debug.Log ("unpause the game please");
+//			// unpause game, unpause timer
+//			// set panel to inactive
+//			pausePanGO.SetActive(false);
+//		}
 
-		}
-		else 
-		{
-			Debug.Log ("unpause the game please");
-			// unpause game, unpause timer
-			// set panel to inactive
-			pausePanGO.SetActive(false);
-		}
-	}
+}
 }
