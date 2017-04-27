@@ -30,3 +30,6 @@
 ## 3rd Party Sprites used
 - Ducks and Dog (https://scratch.mit.edu/projects/23258/)
 - Tutorial Sprite "Running Grant" (https://jsfiddle.net/lannymcnie/2kr23/)
+
+## Code
+- Utils.cs was copied from the course textbook (Introduction to Game Design, Prototyping, and Development) but not implemented.
