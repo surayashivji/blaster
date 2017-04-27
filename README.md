@@ -11,7 +11,7 @@
 
 1. Clone Repository
 2. Print the Shooter AR Marker (Below, acts as the gun)<br><br>
-<a href='https://drive.google.com/file/d/0B6aOEAXdWnEGVXNaYU9URFJCOWs/view?usp=sharing'> <img src='http://i.imgur.com/tGhO5qM.png' title='Marker' alt='Marker'/></a>
+<a href='https://drive.google.com/file/d/0B6aOEAXdWnEGVXNaYU9URFJCOWs/view?usp=sharing'> <img style="width:120px;" src='http://i.imgur.com/tGhO5qM.png' title='Marker' alt='Marker'/></a>
 
 #### iOS
 1.  Ensure your iOS device is connected and [can run an iOS app](https://developer.apple.com/library/content/documentation/IDEs/Conceptual/AppDistributionGuide/LaunchingYourApponDevices/LaunchingYourApponDevices.html)
@@ -23,13 +23,13 @@
 2. Press `play`
 3. Hold the Marker to your webcam to start playing
 
+
+## Walkthrough
+
+<div>
+<img style="float:left;width:200px;" src='http://i.imgur.com/rNSjc3Y.gif' title='Home' alt='Home'/>
+</div>
+
 ## Credits
 - [Unity](https://unity3d.com/)
 - [Vuforia](https://www.vuforia.com/)
-
-## 3rd Party Sprites used
-- Ducks and Dog (https://scratch.mit.edu/projects/23258/)
-- Tutorial Sprite "Running Grant" (https://jsfiddle.net/lannymcnie/2kr23/)
-
-## Code
-- Utils.cs was copied from the course textbook (Introduction to Game Design, Prototyping, and Development) but not implemented.
