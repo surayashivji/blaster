@@ -26,3 +26,7 @@
 ## Credits
 - [Unity](https://unity3d.com/)
 - [Vuforia](https://www.vuforia.com/)
+
+## 3rd Party Sprites used
+- Ducks and Dog (https://scratch.mit.edu/projects/23258/)
+- Tutorial Sprite "Running Grant" (https://jsfiddle.net/lannymcnie/2kr23/)
