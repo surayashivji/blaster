@@ -35,7 +35,7 @@ public class AchievementManager : MonoBehaviour {
 		InstantiateAchievement ("AchievementList", "Amateur", "Complete Level 1!", 0);
 		InstantiateAchievement ("AchievementList", "Superstar", "Beat Level 2 to unlock!", 1);
 		InstantiateAchievement ("AchievementList", "Trojan", "Beat Level 3 to unlock!", 2);
-		InstantiateAchievement ("AchievementList", "Max Nikas", "It's a secret!", 3);
+		InstantiateAchievement ("AchievementList", "Max Nikias", "It's a secret!", 3);
 	}
 
 	// EarnAchievement("Amateur");
