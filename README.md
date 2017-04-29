@@ -27,7 +27,7 @@
 ## Walkthrough
 
 <div>
-<img style="float:left;width:250px" src="Home.gif?raw=true" title='Home' alt='Home'>
+<img style="float:left" src="Home.gif?raw=true" title='Home' alt='Home'>
 <img style="float:left" src="Level1.gif?raw=true" title='Level 1' alt='Level 1'>
 <img style="float:left" src="Level3.gif?raw=true" title='Level 3' alt='Level 3'>
 </div>
