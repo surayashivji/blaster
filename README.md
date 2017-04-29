@@ -27,10 +27,9 @@
 ## Walkthrough
 
 <div>
-<img style="float:left;width:160px;" src='http://i.imgur.com/H5fyiZe.gif' title='Home' alt='Home'/>
-
-<img style="float:left;width:160px;" src='http://i.imgur.com/LksmWj1.gif' title='Level 1' alt='Level 1'/>
-<img style="float:left;width:160px;" src='http://i.imgur.com/SaTX3Ky.gif' title='Level 3' alt='Level 3'/>
+<img style="float:left;width:250px" src="Home.gif?raw=true" title='Home' alt='Home'>
+<img style="float:left" src="Level1.gif?raw=true" title='Level 1' alt='Level 1'>
+<img style="float:left" src="Level3.gif?raw=true" title='Level 3' alt='Level 3'>
 </div>
 
 ## Credits
